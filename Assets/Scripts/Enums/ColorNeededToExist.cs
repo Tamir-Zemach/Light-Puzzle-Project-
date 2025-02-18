@@ -8,5 +8,6 @@ public enum ColorNeededToExist
     Blue,
     Purple,
     Cyan,
+    Brown,
     White
 }

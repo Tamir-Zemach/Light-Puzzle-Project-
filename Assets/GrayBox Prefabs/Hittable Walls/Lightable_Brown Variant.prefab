@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &3554003630629212223
+--- !u!1001 &1202411250329053904
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -10,23 +10,23 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 242582705795283664, guid: be4f374ce0298844bb82d7d7451abb64, type: 3}
       propertyPath: m_Name
-      value: Lightable_White Variant
+      value: Lightable_Brown Variant
       objectReference: {fileID: 0}
     - target: {fileID: 2091087298454537636, guid: be4f374ce0298844bb82d7d7451abb64, type: 3}
       propertyPath: colorNeeded
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6361435593282761175, guid: be4f374ce0298844bb82d7d7451abb64, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.39
+      value: -22.88
       objectReference: {fileID: 0}
     - target: {fileID: 6361435593282761175, guid: be4f374ce0298844bb82d7d7451abb64, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.48
+      value: -25.978422
       objectReference: {fileID: 0}
     - target: {fileID: 6361435593282761175, guid: be4f374ce0298844bb82d7d7451abb64, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 9.054501
+      value: 1.62
       objectReference: {fileID: 0}
     - target: {fileID: 6361435593282761175, guid: be4f374ce0298844bb82d7d7451abb64, type: 3}
       propertyPath: m_LocalRotation.w
@@ -34,15 +34,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6361435593282761175, guid: be4f374ce0298844bb82d7d7451abb64, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 6361435593282761175, guid: be4f374ce0298844bb82d7d7451abb64, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 6361435593282761175, guid: be4f374ce0298844bb82d7d7451abb64, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 6361435593282761175, guid: be4f374ce0298844bb82d7d7451abb64, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -59,7 +59,7 @@ PrefabInstance:
     - target: {fileID: 7133977471852300033, guid: be4f374ce0298844bb82d7d7451abb64, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 0e21b4d270a57644081d48e21c30746b, type: 2}
+      objectReference: {fileID: 2100000, guid: fd5eb5585886d764fa0984288d56987d, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

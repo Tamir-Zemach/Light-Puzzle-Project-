@@ -56,6 +56,10 @@ public class LightReactionTest : MonoBehaviour
                 colorTag = new LanternColor[] { LanternColor.Blue, LanternColor.Green };
                 break;
 
+            case ColorNeededToExist.Brown:
+                colorTag = new LanternColor[] { LanternColor.Red, LanternColor.Green };
+                break;
+
             case ColorNeededToExist.White:
                 colorTag = new LanternColor[] { LanternColor.Red, LanternColor.Green, LanternColor.Blue };
                 break;
