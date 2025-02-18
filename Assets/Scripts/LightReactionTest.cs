@@ -24,7 +24,7 @@ public class LightReactionTest : MonoBehaviour
     private void Awake()
     {
         col = GetComponent<Collider>();
-        rend = GetComponent<Renderer>();
+        rend = gameObject.GetComponentInChildren<Renderer>();
     }
 
     private void Start()
