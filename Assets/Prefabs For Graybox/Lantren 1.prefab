@@ -279,7 +279,7 @@ MonoBehaviour:
   lightHitLayer:
     serializedVersion: 2
     m_Bits: 128
-  lightColorPicker: 0
+  lanternColor: 0
 --- !u!65 &3717241431376081925
 BoxCollider:
   m_ObjectHideFlags: 0

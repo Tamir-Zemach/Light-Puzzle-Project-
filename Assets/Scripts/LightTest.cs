@@ -11,48 +11,55 @@ public class LightTest : MonoBehaviour
 
     [SerializeField] float maxRayCastDistance = 15f;
     [SerializeField] LayerMask lightHitLayer;
-    [SerializeField] ColorPicker lightColorPicker;
+    [SerializeField] LanternColor lanternColor;
 
 
 
     private LightReactionTest currentHitLightReactionScript;
     private Light spotLightChild; // should it be child?
-    private string colorTag;
+    private string colorTag; //working with strings feels dangerous
+
+    // TODO: Ask pavel about strings, maybe there is a better way to do it
 
     private void OnValidate()
     {
         spotLightChild = GetComponentInChildren<Light>();
 
-        if (lightColorPicker == ColorPicker.red)
+        if (lanternColor == LanternColor.Red)
         {
             colorTag = "Red";
             spotLightChild.color = Color.red;
         }
-        if (lightColorPicker == ColorPicker.green)
+        if (lanternColor == LanternColor.Green)
         {
             colorTag = "Green";
             spotLightChild.color = Color.green;
         }
-        if (lightColorPicker == ColorPicker.blue)
+        if (lanternColor == LanternColor.Blue)
         {
             colorTag = "Blue";
             spotLightChild.color = Color.blue;
         }
     }
-    private void Awake()
-    {
-        
-    }
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
 
-    }
 
-    // Update is called once per frame
     void Update()
     {
+
         Physics.queriesHitTriggers = true;
+
+        /* before checking for light Reaction script, make it null nad remove color tag from the list - 
+         * so that if it hits a different target it still removes colortag from the first hit*/
+        if (currentHitLightReactionScript != null)
+        {
+            if (currentHitLightReactionScript.colorsHittingNow.Contains(colorTag))
+            {
+                currentHitLightReactionScript.colorsHittingNow.Remove(colorTag);
+                currentHitLightReactionScript = null;
+            }
+
+        }
+
         if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hitInfo, maxRayCastDistance, lightHitLayer))
         {
 
@@ -69,47 +76,20 @@ public class LightTest : MonoBehaviour
                 }
             }
         }
-        else
-        {
-            if (currentHitLightReactionScript != null)
 
-                if (currentHitLightReactionScript.colorsHittingNow.Contains(colorTag))
-                {
-                    currentHitLightReactionScript.colorsHittingNow.Remove(colorTag);
-                    currentHitLightReactionScript = null;
-                }
-        }
+        // is this required code? seems to work fine without it since it checks for it at the start of update
+        /* else
+         {
+             if (currentHitLightReactionScript != null)
 
+                 if (currentHitLightReactionScript.colorsHittingNow.Contains(colorTag))
+                 {
+                     currentHitLightReactionScript.colorsHittingNow.Remove(colorTag);
+                     currentHitLightReactionScript = null;
+                 }
+         } */
 
-
-
-
-        /*if (currentHitLightReactionScript != null)
-        {
-            if (colorTag == currentHitLightReactionScript.colorTag)
-            {
-                currentHitLightReactionScript.Exist();
-            }
-        }
     }
-    else
-    {
-        if(currentHitLightReactionScript != null)
-        {
-            if (colorTag == currentHitLightReactionScript.colorTag)
-            {
-                currentHitLightReactionScript.DontExist();
-                currentHitLightReactionScript = null;
-            }
-        }
-    }*/
-    }
-
-    public enum ColorPicker
-    {
-        red, green, blue
-    };
-
 
     private void OnDrawGizmos()
     {

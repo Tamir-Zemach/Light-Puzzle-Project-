@@ -21,27 +21,27 @@ public class Player_Pickup_Controller : MonoBehaviour
     private ThirdPersonController _playerContoller;
     private float _defaultCameraTopClamp;
     private float _defaultCameraBottomClamp;
-    
-    
+
+
     private void Awake()
     {
         _player = GameObject.FindGameObjectWithTag("Player");
         _textToAppear = gameObject.transform.GetComponentInChildren<TextMeshPro>();
         _playerContoller = gameObject.GetComponentInParent<ThirdPersonController>();
-        _defaultCameraTopClamp =_playerContoller.TopClamp; 
+        _defaultCameraTopClamp = _playerContoller.TopClamp;
         _defaultCameraBottomClamp = _playerContoller.BottomClamp;
-        
+
     }
     private void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
         Debug.DrawRay(_rayStartPos.transform.position, _rayStartPos.transform.forward * _rayLength, Color.red);
-        
+
         CheckingForPickups();
         DropPickup();
         //MouseChangeRotForPlayer();
@@ -51,9 +51,9 @@ public class Player_Pickup_Controller : MonoBehaviour
     private void CheckingForPickups()
     {
         // check with raycast for layer "pickableObject & checking if he already picked up an object 
-        if (Physics.Raycast(_rayStartPos.transform.position , _rayStartPos.transform.forward, out _hitInfo, _rayLength, _pickableItemLayer) && _pickedUpGameObject == false)
+        if (Physics.Raycast(_rayStartPos.transform.position, _rayStartPos.transform.forward, out _hitInfo, _rayLength, _pickableItemLayer) && _pickedUpGameObject == false)
         {
-             
+
             Debug.Log("can pick up");
             _currentOutLine = _hitInfo.collider.GetComponent<Outline>();
             _textToAppear.enabled = true;
@@ -78,11 +78,11 @@ public class Player_Pickup_Controller : MonoBehaviour
                 _playerContoller.TopClamp = 0;
                 _playerContoller.BottomClamp = 0;
                 _playerContoller.CinemachineCameraTarget = _player;
-                
+
                 _pickedUpGameObject = true;
-                
+
             }
-            
+
         }
         else
         {
@@ -111,16 +111,22 @@ public class Player_Pickup_Controller : MonoBehaviour
         }
     }
 
-    private void MouseChangeRotForPlayer()
+    public void DropPickupInFrontOfWall(Vector3 dropPoint)
     {
+
         if (_pickedUpGameObject)
         {
-            gameObject.transform.rotation = new Quaternion(gameObject.transform.rotation.x, _playerCameraRoot.transform.rotation.y *-1, gameObject.transform.rotation.z, gameObject.transform.rotation.w);
+            _objectThatGotPickedUp.GetComponent<Rigidbody>().isKinematic = false;
+            _objectThatGotPickedUp.transform.SetParent(null);
+            _objectThatGotPickedUp.transform.position = dropPoint;
+            _objectThatGotPickedUp = null;
+            _pickedUpGameObject = false;
+            _pickupCam.enabled = false;
+            _playerContoller.TopClamp = _defaultCameraTopClamp;
+            _playerContoller.BottomClamp = _defaultCameraBottomClamp;
+            _playerContoller.CinemachineCameraTarget = _playerCameraRoot;
         }
-        else
-        {
-            gameObject.transform.rotation = gameObject.transform.rotation;
-        }
+
     }
 
 
