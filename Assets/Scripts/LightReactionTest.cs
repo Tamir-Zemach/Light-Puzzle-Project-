@@ -6,21 +6,23 @@ using UnityEngine;
 public class LightReactionTest : MonoBehaviour
 {
 
-    //private Rigidbody rb;
+    [SerializeField, Tooltip("By default object exists when light in the right color hits it. when ticked, object disappears when light in the right color hits it.")]
+    bool flipBehavior = false;
+    [SerializeField] ColorNeededToExist colorNeeded;
+   
+
     private Collider col;
     private Renderer rend;
 
-    [SerializeField, Tooltip("By default object exists when light in the right color hits it. when ticked, object disappears when light in the right color hits it.")]
-    bool flipBehavior = false;
 
-    private string[] colorTag;
-    [SerializeField] ColorNeededToExist colorNeeded;
-    [SerializeField] bool existOnAwake = true;
-    public List<string> colorsHittingNow = new List<string>();
+    public List<LanternColor> colorsHittingNow = new List<LanternColor>(); //TODO: naghuty attributes, read only
+    private LanternColor[] colorTag;
+
+
+
 
     private void Awake()
     {
-        //rb = GetComponent<Rigidbody>();
         col = GetComponent<Collider>();
         rend = GetComponent<Renderer>();
     }
@@ -31,51 +33,34 @@ public class LightReactionTest : MonoBehaviour
         {
 
             case ColorNeededToExist.None:
-                colorTag = new string[0];
+                colorTag = new LanternColor[0];
                 break;
 
             case ColorNeededToExist.Red:
-                colorTag = new string[] { "Red" };
+                colorTag = new LanternColor[] { LanternColor.Red };
                 break;
 
             case ColorNeededToExist.Green:
-                colorTag = new string[] { "Green" };
+                colorTag = new LanternColor[] { LanternColor.Green };
                 break;
 
             case ColorNeededToExist.Blue:
-                colorTag = new string[] { "Blue" };
+                colorTag = new LanternColor[] { LanternColor.Blue };
                 break;
 
             case ColorNeededToExist.Purple:
-                colorTag = new string[] { "Red", "Blue" };
+                colorTag = new LanternColor[] { LanternColor.Red, LanternColor.Blue };
                 break;
 
             case ColorNeededToExist.Cyan:
-                colorTag = new string[] { "Blue", "Green" };
+                colorTag = new LanternColor[] { LanternColor.Blue, LanternColor.Green };
                 break;
 
             case ColorNeededToExist.White:
-                colorTag = new string[] { "Red", "Green", "Blue" };
+                colorTag = new LanternColor[] { LanternColor.Red, LanternColor.Green, LanternColor.Blue };
                 break;
 
 
-        }
-
-        print("start" + colorsHittingNow);
-        print("start" + colorTag);
-
-        if (existOnAwake)
-        {
-            if (!flipBehavior)
-            {
-                colorsHittingNow.AddRange(colorTag);
-            }
-
-            Exist();
-        }
-        else
-        {
-            DontExist();
         }
     }
 
@@ -88,29 +73,28 @@ public class LightReactionTest : MonoBehaviour
     {
         rend.enabled = true;
         col.isTrigger = false;
-        //rb.constraints = RigidbodyConstraints.None;
+
     }
 
     public void DontExist()
     {
         rend.enabled = false;
         col.isTrigger = true;
-        //rb.constraints = RigidbodyConstraints.FreezeAll;
+
     }
 
-    private bool CompareListToArray(List<string> list, string[] stringArray)
+    private bool CompareListToArray(List<LanternColor> list, LanternColor[] lanternColorArray)
     {
-        //print(list);
-        //print(stringArray);
 
-        if (list.Count != stringArray.Length)
+
+        if (list.Count != lanternColorArray.Length)
         {
             return false;
         }
 
-        foreach (string str in stringArray)
+        foreach (LanternColor color in lanternColorArray)
         {
-            if (!list.Contains(str)) return false;
+            if (!list.Contains(color)) return false;
         }
 
         return true;

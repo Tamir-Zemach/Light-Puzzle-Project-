@@ -2,12 +2,12 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class LightTest : MonoBehaviour
+public class LightTest1 : MonoBehaviour
 {
     //raycast in direction of light, possibly cone raycast
     //need the user to be able to choose the light color in inspector, or the ray cast to get the light from a light component as reference
     //range should also effect light
-    //if raycast hit something that is supposed to react to light, should it react in this script?
+
 
     [SerializeField] float maxRayCastDistance = 15f;
     [SerializeField] LayerMask lightHitLayer;
@@ -17,28 +17,25 @@ public class LightTest : MonoBehaviour
 
     private LightReactionTest currentHitLightReactionScript;
     private Light spotLightChild; // should it be child?
-    private string colorTag; //working with strings feels dangerous
-
-    // TODO: Ask pavel about strings, maybe there is a better way to do it
 
     private void OnValidate()
     {
+
         spotLightChild = GetComponentInChildren<Light>();
 
-        if (lanternColor == LanternColor.Red)
+        switch (lanternColor)
         {
-            colorTag = "Red";
-            spotLightChild.color = Color.red;
-        }
-        if (lanternColor == LanternColor.Green)
-        {
-            colorTag = "Green";
-            spotLightChild.color = Color.green;
-        }
-        if (lanternColor == LanternColor.Blue)
-        {
-            colorTag = "Blue";
-            spotLightChild.color = Color.blue;
+            case LanternColor.Red:
+                spotLightChild.color = Color.red;
+                break;
+
+            case LanternColor.Green:
+                spotLightChild.color = Color.green;
+                break;
+
+            case LanternColor.Blue:
+                spotLightChild.color = Color.blue;
+                break;
         }
     }
 
@@ -48,13 +45,13 @@ public class LightTest : MonoBehaviour
 
         Physics.queriesHitTriggers = true;
 
-        /* before checking for light Reaction script, make it null nad remove color tag from the list - 
+        /* before checking for light Reaction script, make it null and remove color tag from the list - 
          * so that if it hits a different target it still removes colortag from the first hit*/
         if (currentHitLightReactionScript != null)
         {
-            if (currentHitLightReactionScript.colorsHittingNow.Contains(colorTag))
+            if (currentHitLightReactionScript.colorsHittingNow.Contains(lanternColor))
             {
-                currentHitLightReactionScript.colorsHittingNow.Remove(colorTag);
+                currentHitLightReactionScript.colorsHittingNow.Remove(lanternColor);
                 currentHitLightReactionScript = null;
             }
 
@@ -70,24 +67,12 @@ public class LightTest : MonoBehaviour
 
             if (currentHitLightReactionScript != null)
             {
-                if (!currentHitLightReactionScript.colorsHittingNow.Contains(colorTag))
+                if (!currentHitLightReactionScript.colorsHittingNow.Contains(lanternColor))
                 {
-                    currentHitLightReactionScript.colorsHittingNow.Add(colorTag);
+                    currentHitLightReactionScript.colorsHittingNow.Add(lanternColor);
                 }
             }
         }
-
-        // is this required code? seems to work fine without it since it checks for it at the start of update
-        /* else
-         {
-             if (currentHitLightReactionScript != null)
-
-                 if (currentHitLightReactionScript.colorsHittingNow.Contains(colorTag))
-                 {
-                     currentHitLightReactionScript.colorsHittingNow.Remove(colorTag);
-                     currentHitLightReactionScript = null;
-                 }
-         } */
 
     }
 
