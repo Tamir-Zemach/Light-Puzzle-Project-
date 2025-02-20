@@ -21,6 +21,8 @@ public class Player_Pickup_Controller : MonoBehaviour
     private ThirdPersonController _playerContoller;
     private float _defaultCameraTopClamp;
     private float _defaultCameraBottomClamp;
+    //add collider infront of the player to prevent the lamps to go in to walls
+    //[SerializeField] private Collider _colliderToAdd;
 
 
     private void Awake()
@@ -30,6 +32,8 @@ public class Player_Pickup_Controller : MonoBehaviour
         _playerContoller = gameObject.GetComponentInParent<ThirdPersonController>();
         _defaultCameraTopClamp = _playerContoller.TopClamp;
         _defaultCameraBottomClamp = _playerContoller.BottomClamp;
+        //_colliderToAdd = gameObject.GetComponentInChildren<Collider>();
+        //_colliderToAdd.gameObject.SetActive(false);
 
     }
     private void Start()
@@ -73,12 +77,13 @@ public class Player_Pickup_Controller : MonoBehaviour
                 _objectThatGotPickedUp.transform.parent = gameObject.transform;
                 _objectThatGotPickedUp.transform.position = gameObject.transform.position;
                 _objectThatGotPickedUp.transform.rotation = gameObject.transform.rotation;
-                _objectThatGotPickedUp.GetComponent<Rigidbody>().isKinematic = true;
+                //_objectThatGotPickedUp.GetComponent<Rigidbody>().isKinematic = true;
+                _objectThatGotPickedUp.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
                 _pickupCam.enabled = true;
                 _playerContoller.TopClamp = 0;
                 _playerContoller.BottomClamp = 0;
                 _playerContoller.CinemachineCameraTarget = _player;
-
+                //_colliderToAdd.gameObject.SetActive(true);
                 _pickedUpGameObject = true;
 
             }
@@ -100,7 +105,8 @@ public class Player_Pickup_Controller : MonoBehaviour
     {
         if (_pickedUpGameObject && Input.GetKeyDown(KeyCode.F))
         {
-            _objectThatGotPickedUp.GetComponent<Rigidbody>().isKinematic = false;
+            //_objectThatGotPickedUp.GetComponent<Rigidbody>().isKinematic = false;
+            _objectThatGotPickedUp.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
             _objectThatGotPickedUp.transform.SetParent(null);
             _objectThatGotPickedUp = null;
             _pickedUpGameObject = false;
@@ -108,6 +114,7 @@ public class Player_Pickup_Controller : MonoBehaviour
             _playerContoller.TopClamp = _defaultCameraTopClamp;
             _playerContoller.BottomClamp = _defaultCameraBottomClamp;
             _playerContoller.CinemachineCameraTarget = _playerCameraRoot;
+            //_colliderToAdd.gameObject.SetActive(false);
         }
     }
 
@@ -116,7 +123,8 @@ public class Player_Pickup_Controller : MonoBehaviour
 
         if (_pickedUpGameObject)
         {
-            _objectThatGotPickedUp.GetComponent<Rigidbody>().isKinematic = false;
+            //_objectThatGotPickedUp.GetComponent<Rigidbody>().isKinematic = false;
+            _objectThatGotPickedUp.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
             _objectThatGotPickedUp.transform.SetParent(null);
             _objectThatGotPickedUp.transform.position = dropPoint;
             _objectThatGotPickedUp = null;
@@ -125,6 +133,7 @@ public class Player_Pickup_Controller : MonoBehaviour
             _playerContoller.TopClamp = _defaultCameraTopClamp;
             _playerContoller.BottomClamp = _defaultCameraBottomClamp;
             _playerContoller.CinemachineCameraTarget = _playerCameraRoot;
+            //_colliderToAdd.gameObject.SetActive(false);
         }
 
     }

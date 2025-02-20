@@ -194,6 +194,37 @@ Transform:
   - {fileID: 3614193995602188653}
   m_Father: {fileID: 1437205166881695458}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &489313930297174430
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7416109277075953797}
+  m_Layer: 0
+  m_Name: PickUpCamTarget
+  m_TagString: CinemachineTarget
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7416109277075953797
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 489313930297174430}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.375, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 609027787619638811}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &784677189176244469
 GameObject:
   m_ObjectHideFlags: 0
@@ -1576,6 +1607,7 @@ Transform:
   m_Children:
   - {fileID: 8930994872982777015}
   - {fileID: 6507637870103721678}
+  - {fileID: 7416109277075953797}
   - {fileID: 425196171204776158}
   - {fileID: 3728271684315388052}
   m_Father: {fileID: 0}
@@ -1640,7 +1672,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MoveSpeed: 6
-  SprintSpeed: 8
+  SprintSpeed: 12
   RotationSmoothTime: 0.12
   SpeedChangeRate: 10
   LandingAudioClip: {fileID: 8300000, guid: ff697d3070687ce4583faa0561a145a2, type: 3}
@@ -2709,6 +2741,10 @@ PrefabInstance:
     - target: {fileID: 3255170608812881864, guid: 6b61e459a17c0074abefee1e8a59aaa7, type: 3}
       propertyPath: m_Name
       value: PlayerPickupController
+      objectReference: {fileID: 0}
+    - target: {fileID: 3255170608812881864, guid: 6b61e459a17c0074abefee1e8a59aaa7, type: 3}
+      propertyPath: m_TagString
+      value: Test
       objectReference: {fileID: 0}
     - target: {fileID: 6293326476660189275, guid: 6b61e459a17c0074abefee1e8a59aaa7, type: 3}
       propertyPath: m_LocalPosition.x
