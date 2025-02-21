@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 242582705795283664, guid: be4f374ce0298844bb82d7d7451abb64, type: 3}
       propertyPath: m_Name
-      value: Lightable_Brown Variant
+      value: Lightable_Orange Variant
       objectReference: {fileID: 0}
     - target: {fileID: 2091087298454537636, guid: be4f374ce0298844bb82d7d7451abb64, type: 3}
       propertyPath: colorNeeded

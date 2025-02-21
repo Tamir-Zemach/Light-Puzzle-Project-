@@ -4,10 +4,10 @@ public enum ColorNeededToExist
 {
     None,
     Red,
-    Green, 
+    Yellow, 
     Blue,
     Purple,
-    Cyan,
-    Brown,
+    Green,
+    Orange,
     White
 }

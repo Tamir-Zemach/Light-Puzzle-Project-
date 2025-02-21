@@ -40,8 +40,8 @@ public class LightReactionTest : MonoBehaviour
                 colorTag = new LanternColor[] { LanternColor.Red };
                 break;
 
-            case ColorNeededToExist.Green:
-                colorTag = new LanternColor[] { LanternColor.Green };
+            case ColorNeededToExist.Yellow:
+                colorTag = new LanternColor[] { LanternColor.Yellow };
                 break;
 
             case ColorNeededToExist.Blue:
@@ -52,16 +52,16 @@ public class LightReactionTest : MonoBehaviour
                 colorTag = new LanternColor[] { LanternColor.Red, LanternColor.Blue };
                 break;
 
-            case ColorNeededToExist.Cyan:
-                colorTag = new LanternColor[] { LanternColor.Blue, LanternColor.Green };
+            case ColorNeededToExist.Green:
+                colorTag = new LanternColor[] { LanternColor.Blue, LanternColor.Yellow };
                 break;
 
-            case ColorNeededToExist.Brown:
-                colorTag = new LanternColor[] { LanternColor.Red, LanternColor.Green };
+            case ColorNeededToExist.Orange:
+                colorTag = new LanternColor[] { LanternColor.Red, LanternColor.Yellow };
                 break;
 
             case ColorNeededToExist.White:
-                colorTag = new LanternColor[] { LanternColor.Red, LanternColor.Green, LanternColor.Blue };
+                colorTag = new LanternColor[] { LanternColor.Red, LanternColor.Yellow, LanternColor.Blue };
                 break;
 
 

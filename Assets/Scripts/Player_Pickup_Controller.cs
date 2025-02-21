@@ -25,6 +25,15 @@ public class Player_Pickup_Controller : MonoBehaviour
     //[SerializeField] private Collider _colliderToAdd;
 
 
+    //raycast from cam vars
+    Camera mainCamera;
+    Vector3 screenCenter = new Vector3(Screen.width / 2f, Screen.height / 2f, 0f);
+
+
+    //TODO: if tamir likes this change, delete hard coded numbers from CheckForPickupsFromCam, and adjust raylength accordingly
+    //TODO: maybe would be better with a boxcast or something? right now you need to be very accurate with where you're looking
+
+
     private void Awake()
     {
         _player = GameObject.FindGameObjectWithTag("Player");
@@ -35,10 +44,8 @@ public class Player_Pickup_Controller : MonoBehaviour
         //_colliderToAdd = gameObject.GetComponentInChildren<Collider>();
         //_colliderToAdd.gameObject.SetActive(false);
 
-    }
-    private void Start()
-    {
 
+        mainCamera = Camera.main;
     }
 
     // Update is called once per frame
@@ -46,9 +53,11 @@ public class Player_Pickup_Controller : MonoBehaviour
     {
         Debug.DrawRay(_rayStartPos.transform.position, _rayStartPos.transform.forward * _rayLength, Color.red);
 
-        CheckingForPickups();
+
+        //CheckingForPickups();
+        CheckForPickupsFromCam();
         DropPickup();
-        //MouseChangeRotForPlayer();
+
     }
 
 
@@ -56,6 +65,57 @@ public class Player_Pickup_Controller : MonoBehaviour
     {
         // check with raycast for layer "pickableObject & checking if he already picked up an object 
         if (Physics.Raycast(_rayStartPos.transform.position, _rayStartPos.transform.forward, out _hitInfo, _rayLength, _pickableItemLayer) && _pickedUpGameObject == false)
+        {
+
+            Debug.Log("can pick up");
+            _currentOutLine = _hitInfo.collider.GetComponent<Outline>();
+            _textToAppear.enabled = true;
+            if (_currentOutLine != null)
+            {
+                // if in the raycast exists a value with a "Outline" Script - than turn it on 
+                _currentOutLine.Highlight();
+            }
+
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                //if you are looking at an object and pressing E - than you clear the highlight and make the parent of the the object to the 
+                //game object 
+                _currentOutLine.ClearHighlight();
+                _textToAppear.enabled = false;
+                _objectThatGotPickedUp = _hitInfo.transform.gameObject;
+                _objectThatGotPickedUp.transform.parent = gameObject.transform;
+                _objectThatGotPickedUp.transform.position = gameObject.transform.position;
+                _objectThatGotPickedUp.transform.rotation = gameObject.transform.rotation;
+                //_objectThatGotPickedUp.GetComponent<Rigidbody>().isKinematic = true;
+                _objectThatGotPickedUp.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+                _pickupCam.enabled = true;
+                _playerContoller.TopClamp = 0;
+                _playerContoller.BottomClamp = 0;
+                _playerContoller.CinemachineCameraTarget = _player;
+                //_colliderToAdd.gameObject.SetActive(true);
+                _pickedUpGameObject = true;
+
+            }
+
+        }
+        else
+        {
+            //if you are not looking at any object that can be picked up than turn off the outline
+            if (_currentOutLine != null)
+            {
+                _currentOutLine.ClearHighlight();
+                _currentOutLine = null;
+                _textToAppear.enabled = false;
+            }
+        }
+    }
+
+    private void CheckForPickupsFromCam()
+    {
+        Ray raycastFromCam = mainCamera.ScreenPointToRay(screenCenter);
+        Debug.DrawRay(raycastFromCam.origin, raycastFromCam.direction);
+
+        if (Physics.Raycast(raycastFromCam, out _hitInfo, _rayLength * 5, _pickableItemLayer) && _pickedUpGameObject == false)
         {
 
             Debug.Log("can pick up");

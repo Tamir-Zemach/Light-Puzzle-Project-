@@ -3,6 +3,6 @@ using UnityEngine;
 public enum LanternColor
 {
  Red,
- Green,
+ Yellow,
  Blue
 }

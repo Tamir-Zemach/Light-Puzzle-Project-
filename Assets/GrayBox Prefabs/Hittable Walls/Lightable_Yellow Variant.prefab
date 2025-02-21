@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &8427239107770952379
+--- !u!1001 &5354884092918711454
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -10,15 +10,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 242582705795283664, guid: be4f374ce0298844bb82d7d7451abb64, type: 3}
       propertyPath: m_Name
-      value: Lightable_Cyan Variant
+      value: Lightable_Yellow Variant
       objectReference: {fileID: 0}
     - target: {fileID: 2091087298454537636, guid: be4f374ce0298844bb82d7d7451abb64, type: 3}
       propertyPath: colorNeeded
-      value: 5
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6361435593282761175, guid: be4f374ce0298844bb82d7d7451abb64, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -7.59
+      value: -11.75
       objectReference: {fileID: 0}
     - target: {fileID: 6361435593282761175, guid: be4f374ce0298844bb82d7d7451abb64, type: 3}
       propertyPath: m_LocalPosition.y
@@ -59,7 +59,7 @@ PrefabInstance:
     - target: {fileID: 7133977471852300033, guid: be4f374ce0298844bb82d7d7451abb64, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 915e67138c494184eb2aaa85e2a4a267, type: 2}
+      objectReference: {fileID: 2100000, guid: 9c76644c6ac1141489e26d015bade34e, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

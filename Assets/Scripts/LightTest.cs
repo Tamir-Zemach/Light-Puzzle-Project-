@@ -9,8 +9,10 @@ public class LightTest1 : MonoBehaviour
     //range should also effect light
 
 
+
+
     [SerializeField] float maxRayCastDistance = 15f;
-    [SerializeField] LayerMask lightHitLayer;
+    [SerializeField] LayerMask IgnoredLayer;
     [SerializeField] LanternColor lanternColor;
 
 
@@ -29,8 +31,8 @@ public class LightTest1 : MonoBehaviour
                 spotLightChild.color = Color.red;
                 break;
 
-            case LanternColor.Green:
-                spotLightChild.color = Color.green;
+            case LanternColor.Yellow:
+                spotLightChild.color = Color.yellow;
                 break;
 
             case LanternColor.Blue:
@@ -57,13 +59,13 @@ public class LightTest1 : MonoBehaviour
 
         }
 
-        if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hitInfo, maxRayCastDistance, lightHitLayer))
+        if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hitInfo, maxRayCastDistance, ~IgnoredLayer))
         {
 
 
             var hitObject = hitInfo.transform;
 
-            currentHitLightReactionScript = hitObject.GetComponent<LightReactionTest>();
+            hitObject.TryGetComponent<LightReactionTest>(out currentHitLightReactionScript);
 
             if (currentHitLightReactionScript != null)
             {

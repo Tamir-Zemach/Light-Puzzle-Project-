@@ -277,9 +277,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxRayCastDistance: 6
-  lightHitLayer:
+  IgnoredLayer:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 4
   lanternColor: 2
 --- !u!65 &3717241431376081925
 BoxCollider:

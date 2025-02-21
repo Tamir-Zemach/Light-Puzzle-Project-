@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 390563014527170328}
   - component: {fileID: 7206357513058769396}
   - component: {fileID: 1645675288123673397}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Separating_Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -83,7 +83,7 @@ GameObject:
   - component: {fileID: 120201778353444170}
   - component: {fileID: 3181271893443964520}
   - component: {fileID: 8324810823486598339}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Gfx
   m_TagString: Untagged
   m_Icon: {fileID: 0}
