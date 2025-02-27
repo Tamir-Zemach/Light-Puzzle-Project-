@@ -1,4 +1,5 @@
 using Unity.VisualScripting;
+using UnityEditor.PackageManager;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -14,6 +15,7 @@ public class LightTest1 : MonoBehaviour
     [SerializeField] float maxRayCastDistance = 15f;
     [SerializeField] LayerMask IgnoredLayer;
     [SerializeField] LanternColor lanternColor;
+
 
 
 
@@ -62,8 +64,10 @@ public class LightTest1 : MonoBehaviour
         if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hitInfo, maxRayCastDistance, ~IgnoredLayer))
         {
 
-
+            
             var hitObject = hitInfo.transform;
+
+
 
             hitObject.TryGetComponent<LightReactionTest>(out currentHitLightReactionScript);
 
@@ -76,10 +80,25 @@ public class LightTest1 : MonoBehaviour
             }
         }
 
+
+
     }
 
     private void OnDrawGizmos()
     {
         Debug.DrawRay(transform.position, transform.forward * maxRayCastDistance, spotLightChild.color);
     }
+
+    //Tamir added line:
+    //private void ParticleSpawnPosManager(Transform transform)
+    //{
+    //    _sparksParticleSystem.transform.position = transform.position;
+    //    _sparksParticleSystem.Play();
+    //}
+    //ParticleSpawnPosManager(hitInfo.transform);
+    //[SerializeField] ParticleSystem _sparksParticleSystem;
+    //        else
+    //    {
+    //        _sparksParticleSystem.Stop();
+    //    }
 }

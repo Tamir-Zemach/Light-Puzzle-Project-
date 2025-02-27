@@ -54,8 +54,8 @@ public class Player_Pickup_Controller : MonoBehaviour
         Debug.DrawRay(_rayStartPos.transform.position, _rayStartPos.transform.forward * _rayLength, Color.red);
 
 
-        //CheckingForPickups();
-        CheckForPickupsFromCam();
+        CheckingForPickups();
+        //CheckForPickupsFromCam();
         DropPickup();
 
     }
@@ -113,7 +113,8 @@ public class Player_Pickup_Controller : MonoBehaviour
     private void CheckForPickupsFromCam()
     {
         Ray raycastFromCam = mainCamera.ScreenPointToRay(screenCenter);
-        Debug.DrawRay(raycastFromCam.origin, raycastFromCam.direction);
+        Debug.DrawRay( raycastFromCam.origin, raycastFromCam.direction, Color.red, _rayLength *5);
+        
 
         if (Physics.Raycast(raycastFromCam, out _hitInfo, _rayLength * 5, _pickableItemLayer) && _pickedUpGameObject == false)
         {
@@ -166,7 +167,8 @@ public class Player_Pickup_Controller : MonoBehaviour
         if (_pickedUpGameObject && Input.GetKeyDown(KeyCode.F))
         {
             //_objectThatGotPickedUp.GetComponent<Rigidbody>().isKinematic = false;
-            _objectThatGotPickedUp.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+            _objectThatGotPickedUp.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
+            _objectThatGotPickedUp.GetComponent<Rigidbody>().linearVelocity = Vector3.zero;
             _objectThatGotPickedUp.transform.SetParent(null);
             _objectThatGotPickedUp = null;
             _pickedUpGameObject = false;
@@ -184,7 +186,8 @@ public class Player_Pickup_Controller : MonoBehaviour
         if (_pickedUpGameObject)
         {
             //_objectThatGotPickedUp.GetComponent<Rigidbody>().isKinematic = false;
-            _objectThatGotPickedUp.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+            _objectThatGotPickedUp.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
+            _objectThatGotPickedUp.GetComponent<Rigidbody>().linearVelocity = Vector3.zero;
             _objectThatGotPickedUp.transform.SetParent(null);
             _objectThatGotPickedUp.transform.position = dropPoint;
             _objectThatGotPickedUp = null;
