@@ -9,11 +9,12 @@ public class LightReactionTest : MonoBehaviour
     [SerializeField, Tooltip("By default object exists when light in the right color hits it. when ticked, object disappears when light in the right color hits it.")]
     bool flipBehavior = false;
     [SerializeField] ColorNeededToExist colorNeeded;
-   
+    
+
 
     private Collider col;
     private Renderer rend;
-
+    private ParticleSystem particles;
 
     public List<LanternColor> colorsHittingNow = new List<LanternColor>(); //TODO: naghuty attributes, read only
     private LanternColor[] colorTag;
@@ -25,6 +26,7 @@ public class LightReactionTest : MonoBehaviour
     {
         col = GetComponent<Collider>();
         rend = gameObject.GetComponentInChildren<Renderer>();
+        particles = GetComponentInChildren<ParticleSystem>();
     }
 
     private void Start()
@@ -71,6 +73,7 @@ public class LightReactionTest : MonoBehaviour
     void Update()
     {
         HandleCurrentColorHit();
+        HandleParticleColor();
     }
 
     public void Exist()
@@ -142,6 +145,64 @@ public class LightReactionTest : MonoBehaviour
             {
                 Exist();
             }
+        }
+    }
+
+    private void HandleParticleColor()
+    {
+        var main = particles.main;
+
+        //maybe better to have a function to detect what color hitting now, and then save
+        //the color that is hitting and use it in particle system and in existing
+        switch (colorsHittingNow)
+        {
+            case var _ when colorsHittingNow.Count == 0:
+                particles.Stop();
+                break;
+
+            case var _ when colorsHittingNow.Contains(LanternColor.Red) && colorsHittingNow.Count == 1:              
+                main.startColor = Color.red;
+                if(!particles.isEmitting)
+                    particles.Play();
+                break;
+
+            case var _ when colorsHittingNow.Contains(LanternColor.Blue) && colorsHittingNow.Count == 1:
+                main.startColor = Color.blue;
+                if (!particles.isEmitting)
+                    particles.Play();
+                break;
+
+            case var _ when colorsHittingNow.Contains(LanternColor.Yellow) && colorsHittingNow.Count == 1:
+                main.startColor = Color.yellow;
+                if (!particles.isEmitting)
+                    particles.Play();
+                break;
+
+            case var _ when colorsHittingNow.Contains(LanternColor.Yellow) && colorsHittingNow.Contains(LanternColor.Red) && colorsHittingNow.Count == 2:
+                print("Orange");
+                main.startColor = new Color(1f, 0.6745098f, 0.1098039f, 1f); //orange
+                if (!particles.isEmitting)
+                    particles.Play();
+                break;
+
+            case var _ when colorsHittingNow.Contains(LanternColor.Blue) && colorsHittingNow.Contains(LanternColor.Red) && colorsHittingNow.Count == 2:
+                print("Puprle");
+                main.startColor = new Color(0.7490196f, 0.2509804f, 0.7490196f, 1f ); // purple
+                if (!particles.isEmitting)
+                    particles.Play();
+                break;
+
+            case var _ when colorsHittingNow.Contains(LanternColor.Yellow) && colorsHittingNow.Contains(LanternColor.Blue) && colorsHittingNow.Count == 2:
+                main.startColor = Color.green;
+                if (!particles.isEmitting)
+                    particles.Play();
+                break;
+
+            case var _ when  colorsHittingNow.Count == 3: //only way it can be 3 is if all colors are hitting
+                main.startColor = Color.white;
+                if (!particles.isEmitting)
+                    particles.Play();
+                break;
         }
     }
 
