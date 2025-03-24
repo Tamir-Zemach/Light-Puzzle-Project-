@@ -21,12 +21,17 @@ public class LightReactionTest : MonoBehaviour
 
 
 
-
+    private void OnValidate()
+    {
+       
+    }
     private void Awake()
     {
-        col = GetComponent<Collider>();
+        
         rend = gameObject.GetComponentInChildren<Renderer>();
+        col = GetComponent<Collider>();
         particles = GetComponentInChildren<ParticleSystem>();
+        HandleParticleSystemSize(col);
     }
 
     private void Start()
@@ -68,6 +73,8 @@ public class LightReactionTest : MonoBehaviour
 
 
         }
+
+        
     }
 
     void Update()
@@ -204,6 +211,13 @@ public class LightReactionTest : MonoBehaviour
                     particles.Play();
                 break;
         }
+    }
+
+    private void HandleParticleSystemSize(Collider col)
+    {
+        var shape = particles.shape;
+
+        shape.scale = col.bounds.size; 
     }
 
 }
