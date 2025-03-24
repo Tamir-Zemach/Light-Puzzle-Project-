@@ -3,11 +3,16 @@ using FMODUnity;
 
 public class FmodEvents : MonoBehaviour
 {
-    [field: Header("Landing SFX")]
+
+    [field: Header("Player SFX")]
+    [field: SerializeField] public EventReference playerFootstep { get; private set; }
     [field: SerializeField] public EventReference playerLand { get; private set; }
 
-    [field: Header("Footsteps SFX")]
-    [field: SerializeField] public EventReference playerFootstep { get; private set; }
+    [field: Header("Ambience")]
+    [field: SerializeField] public EventReference windAndWaves { get; private set; }
+
+
+
 
     public static FmodEvents instance { get; private set; }
 

@@ -5,7 +5,7 @@
 			<value>Ambient Waves and Wind</value>
 		</property>
 		<property name="outputFormat">
-			<value>2</value>
+			<value>1</value>
 		</property>
 		<relationship name="folder">
 			<destination>{bd827d88-1f26-4d03-93de-b86f26b58e02}</destination>
@@ -246,7 +246,6 @@
 	<object class="MixerBusEffectChain" id="{c7f13655-a292-4b69-aa7f-8f4fb85df7ad}">
 		<relationship name="effects">
 			<destination>{aa49509c-d714-40d4-b470-d15f003d5f6f}</destination>
-			<destination>{0ad9a866-8575-45f3-be3e-d0c8c7b19b81}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{9d047e24-1fa9-430e-acef-2f5a5d093e4d}" />
@@ -334,7 +333,6 @@
 	</object>
 	<object class="MixerBusPanner" id="{52b81931-a602-4435-b0a6-a910b80185ec}" />
 	<object class="MixerBusFader" id="{aa49509c-d714-40d4-b470-d15f003d5f6f}" />
-	<object class="SpatialiserEffect" id="{0ad9a866-8575-45f3-be3e-d0c8c7b19b81}" />
 	<object class="AutomationPoint" id="{0d649fee-bb10-4243-ab0e-61dacbd6a3b2}">
 		<property name="position">
 			<value>0</value>
