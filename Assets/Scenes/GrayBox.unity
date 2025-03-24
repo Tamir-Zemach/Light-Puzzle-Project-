@@ -6263,6 +6263,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7263690860386702768, guid: 6a9aca4e6d8738f488dd7911aa8939f1, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 7263690860386702768, guid: 6a9aca4e6d8738f488dd7911aa8939f1, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7263690860386702768, guid: 6a9aca4e6d8738f488dd7911aa8939f1, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 7263690860386702768, guid: 6a9aca4e6d8738f488dd7911aa8939f1, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7263690860386702768, guid: 6a9aca4e6d8738f488dd7911aa8939f1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 90
+      objectReference: {fileID: 0}
     - target: {fileID: 8855157944616984750, guid: 6a9aca4e6d8738f488dd7911aa8939f1, type: 3}
       propertyPath: m_Name
       value: Lightable_Red_Flat Variant (1)
