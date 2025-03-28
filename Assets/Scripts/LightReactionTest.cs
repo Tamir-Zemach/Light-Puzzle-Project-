@@ -1,3 +1,4 @@
+using DissolveExample;
 using NUnit.Framework;
 using System.Collections;
 using System.Collections.Generic;
@@ -5,30 +6,22 @@ using UnityEngine;
 
 public class LightReactionTest : MonoBehaviour
 {
-
-    [SerializeField, Tooltip("By default object exists when light in the right color hits it. when ticked, object disappears when light in the right color hits it.")]
-    bool flipBehavior = false;
     [SerializeField] ColorNeededToExist colorNeeded;
     
 
 
     private Collider col;
-    private Renderer rend;
     private ParticleSystem particles;
+    private Dissolve _dissolveScript;
 
     public List<LanternColor> colorsHittingNow = new List<LanternColor>(); //TODO: naghuty attributes, read only
     private LanternColor[] colorTag;
 
+    private bool _isExisting;
 
-
-    private void OnValidate()
-    {
-       
-    }
     private void Awake()
     {
-        
-        rend = gameObject.GetComponentInChildren<Renderer>();
+        _dissolveScript = gameObject.GetComponent<Dissolve>();
         col = GetComponent<Collider>();
         particles = GetComponentInChildren<ParticleSystem>();
         HandleParticleSystemSize(col);
@@ -85,15 +78,22 @@ public class LightReactionTest : MonoBehaviour
 
     public void Exist()
     {
-        rend.enabled = true;
-        col.isTrigger = false;
-
+        if (!_isExisting)
+        {
+            _dissolveScript.UnDissolve();
+            col.isTrigger = false;
+            _isExisting = true;
+        }
     }
 
     public void DontExist()
     {
-        rend.enabled = false;
-        col.isTrigger = true;
+        if (_isExisting)
+        {
+            _dissolveScript._Dissolve();
+            col.isTrigger = true;
+            _isExisting = false;
+        }
 
     }
 
@@ -122,28 +122,6 @@ public class LightReactionTest : MonoBehaviour
         {
             Debug.LogError("colorsHittingnow is Null");
         }
-        if (!flipBehavior)
-        {
-            //compare if all items in color tag array are in colors hitting now list.
-            //if ALL items from array ARE in the list, AND the list is the SAME LENGTH of the array
-            //EXIST
-
-            //if list contains something that isnt in array, false.
-            // if list is not the length array false
-
-
-
-            if (CompareListToArray(colorsHittingNow, colorTag))
-            {
-                Exist();
-            }
-            else
-            {
-                DontExist();
-            }
-        }
-        else
-        {
             if (CompareListToArray(colorsHittingNow, colorTag))
             {
                 DontExist();
@@ -152,7 +130,6 @@ public class LightReactionTest : MonoBehaviour
             {
                 Exist();
             }
-        }
     }
 
     private void HandleParticleColor()
