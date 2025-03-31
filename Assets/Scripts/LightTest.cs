@@ -13,6 +13,7 @@ public class LightTest1 : MonoBehaviour
 
 
     [SerializeField] float maxRayCastDistance = 15f;
+    //[SerializeField] float sphereCastRadius = 2f;
     [SerializeField] LayerMask IgnoredLayer;
     [SerializeField] LanternColor lanternColor;
 
@@ -20,6 +21,7 @@ public class LightTest1 : MonoBehaviour
 
 
     private LightReactionTest currentHitLightReactionScript;
+    //private LightReactionTest lightReactionScriptHitBySphere;
     private Light spotLightChild; // should it be child?
 
     private void OnValidate()
@@ -46,7 +48,19 @@ public class LightTest1 : MonoBehaviour
 
     void Update()
     {
+        RaycastForLightReaction();
+    }
 
+    private void OnDrawGizmos()
+    {
+        Debug.DrawRay(transform.position, transform.forward * maxRayCastDistance, spotLightChild.color);
+        Gizmos.color = spotLightChild.color;
+        //Gizmos.DrawWireSphere(transform.position, sphereCastRadius);
+
+    }
+
+    private void RaycastForLightReaction()
+    {
         Physics.queriesHitTriggers = true;
 
         /* before checking for light Reaction script, make it null and remove color tag from the list - 
@@ -61,13 +75,12 @@ public class LightTest1 : MonoBehaviour
 
         }
 
-        if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hitInfo, maxRayCastDistance, ~IgnoredLayer))
+        bool isRaycastHitting = Physics.Raycast(transform.position, transform.forward, out RaycastHit hitInfo, maxRayCastDistance, ~IgnoredLayer);
+
+
+        if (isRaycastHitting)
         {
-
-            
             var hitObject = hitInfo.transform;
-
-
 
             hitObject.TryGetComponent<LightReactionTest>(out currentHitLightReactionScript);
 
@@ -80,25 +93,38 @@ public class LightTest1 : MonoBehaviour
             }
         }
 
+        /*Collider[] sphereOverlapColliders = Physics.OverlapSphere(transform.position, sphereCastRadius, ~IgnoredLayer, QueryTriggerInteraction.Collide);
 
+        if (sphereOverlapColliders.Length > 0)
+        {
+            foreach (var collider in sphereOverlapColliders)
+            {
+                //need to find a place to remove color from list
 
+                lightReactionScriptHitBySphere = collider.GetComponent<LightReactionTest>();
+                if (lightReactionScriptHitBySphere != null)
+                {
+                    if (!lightReactionScriptHitBySphere.colorsHittingNow.Contains(lanternColor))
+                    {
+                        lightReactionScriptHitBySphere.colorsHittingNow.Add(lanternColor);
+                    }
+                }
+
+            }
+        }
+        */
     }
 
-    private void OnDrawGizmos()
+    private void OnDisable()
     {
-        Debug.DrawRay(transform.position, transform.forward * maxRayCastDistance, spotLightChild.color);
-    }
+        if(currentHitLightReactionScript != null)
+        {
+            if (currentHitLightReactionScript.colorsHittingNow.Contains(lanternColor))
+            {
+                currentHitLightReactionScript.colorsHittingNow.Remove(lanternColor);
+                currentHitLightReactionScript = null;
+            }
 
-    //Tamir added line:
-    //private void ParticleSpawnPosManager(Transform transform)
-    //{
-    //    _sparksParticleSystem.transform.position = transform.position;
-    //    _sparksParticleSystem.Play();
-    //}
-    //ParticleSpawnPosManager(hitInfo.transform);
-    //[SerializeField] ParticleSystem _sparksParticleSystem;
-    //        else
-    //    {
-    //        _sparksParticleSystem.Stop();
-    //    }
+        }
+    }
 }
