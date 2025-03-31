@@ -92,3 +92,7 @@ fmod_editor.log
 /[Aa]ssets/StreamingAssets/**/*.bank.meta
 # If the source bank files are kept outside of the StreamingAssets folder then these can be ignored.
 
+
+Assets/Plugins/FMOD/Cache/Editor/FMODStudioCache.asset.meta
+
+Assets/Plugins/FMOD/Cache/Editor.meta

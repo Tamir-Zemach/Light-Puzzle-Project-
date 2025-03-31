@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6361435593282761175}
   - component: {fileID: 7829897036987938696}
   - component: {fileID: 2091087298454537636}
+  - component: {fileID: -7224453985505509178}
   m_Layer: 7
   m_Name: Lightable_Blue
   m_TagString: Untagged
@@ -68,9 +69,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad39144aca44d2546827e7adfa607ffa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  flipBehavior: 1
   colorNeeded: 3
   colorsHittingNow: 
+--- !u!114 &-7224453985505509178
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 242582705795283664}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07895cdb04d6e2147a38f33c5887053b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _dissolveTime: 2
 --- !u!1 &375742418902724708
 GameObject:
   m_ObjectHideFlags: 0
@@ -127,7 +140,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: f8c2f6d9c7f74634eb51ca56a5536bf3, type: 2}
+  - {fileID: 2100000, guid: 9763b800dd61492459138fc9c3ab5fc3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
