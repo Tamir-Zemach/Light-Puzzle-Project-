@@ -8,6 +8,7 @@ namespace DissolveExample
     {
         // Start is call ed before the first frame update
         List<Material> materials = new List<Material>();
+        
         [SerializeField] private float _dissolveTime;
         private float _currentDissolveValue;
         private const float _maxDissolveValue = 1;
@@ -16,9 +17,15 @@ namespace DissolveExample
         void Start()
         {
             var renders = GetComponentsInChildren<Renderer>();
+            
             for (int i = 0; i < renders.Length; i++)
             {
-                materials.AddRange(renders[i].materials);
+
+                if (renders[i].TryGetComponent<ParticleSystem>(out ParticleSystem p) == false)
+                {
+                    materials.AddRange(renders[i].materials);
+                }
+
             }
         }
 
