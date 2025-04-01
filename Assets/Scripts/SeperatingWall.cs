@@ -9,22 +9,20 @@ public class SeperatingWall : MonoBehaviour
     private Vector3 _dropPoint;
     [SerializeField] private float _dropDistance;
 
-    // TODO: doesn't change automatically when transform changes, why and how to change that?
-    // TODO: If player tries to take multiple pickups, they get stacked in the same place, is that fine?
-    // TODO: Learn about bitshift, and how layermasks work bitwise, shift operator
-    // TODO: naughty attributes - layer dropdown
-
-
     private void OnValidate()
     {
         _dropPoint = transform.position + transform.forward * _dropDistance;
     }
+    private void Awake()
+    {
+        pickupController = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<Player_Pickup_Controller>();
+    }
+
     private void OnTriggerEnter(Collider other)
     {
 
         if (((1 << other.gameObject.layer) & pickupLayer) == 1 << other.gameObject.layer)
         {
-
             pickupController.DropPickupInFrontOfWall(_dropPoint);
         }
     }
