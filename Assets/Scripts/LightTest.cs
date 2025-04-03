@@ -2,8 +2,9 @@ using Unity.VisualScripting;
 using UnityEditor.PackageManager;
 using UnityEngine;
 using UnityEngine.UIElements;
+using System.Collections;
 
-public class LightTest1 : MonoBehaviour
+public class LightScript : MonoBehaviour
 {
 
     [SerializeField] float RayCastRange = 15f;
@@ -66,29 +67,36 @@ public class LightTest1 : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        var lightReactionScript = other.GetComponent<LightReactionTest>();
-        if (lightReactionScript != null)
+        if (this.enabled)
         {
-            lightReactionScript.AddColorToList(lanternColor);
+            var lightReactionScript = other.GetComponent<LightReactionTest>();
+            if (lightReactionScript != null)
+            {
+                lightReactionScript.AddColorToList(lanternColor);
+            }
         }
     }
 
     private void OnTriggerStay(Collider other)
     {
-        var lightReactionScript = other.GetComponent<LightReactionTest>();
-        if (lightReactionScript != null)
+        if (this.enabled)
         {
-            lightReactionScript.AddColorToList(lanternColor);
+            var lightReactionScript = other.GetComponent<LightReactionTest>();
+            if (lightReactionScript != null)
+            {
+                lightReactionScript.AddColorToList(lanternColor);
+            }
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        var lightReactionScript = other.GetComponent<LightReactionTest>();
-        if (lightReactionScript != null)
+        if (this.enabled)
         {
-            lightReactionScript.RemoveColorFromList(lanternColor);
+            var lightReactionScript = other.GetComponent<LightReactionTest>();
+            lightReactionScript?.RemoveColorFromList(lanternColor);
         }
+       
     }
 
 
@@ -138,28 +146,26 @@ public class LightTest1 : MonoBehaviour
                 currentHitLightReactionScript.AddColorToList(lanternColor);
             }
         }
-
-        /*Collider[] sphereOverlapColliders = Physics.OverlapSphere(transform.position, sphereCastRadius, ~IgnoredLayer, QueryTriggerInteraction.Collide);
-
-        if (sphereOverlapColliders.Length > 0)
-        {
-            foreach (var collider in sphereOverlapColliders)
-            {
-                //need to find a place to remove color from list
-
-                lightReactionScriptHitBySphere = collider.GetComponent<LightReactionTest>();
-                if (lightReactionScriptHitBySphere != null)
-                {
-                    if (!lightReactionScriptHitBySphere.colorsHittingNow.Contains(lanternColor))
-                    {
-                        lightReactionScriptHitBySphere.colorsHittingNow.Add(lanternColor);
-                    }
-                }
-
-            }
-        }
-        */
     }
+
+    private IEnumerator TurnLightOffForTimer(LightScript lightHeld, float toggleDuration) 
+    {
+        if (lightHeld.enabled)
+        {
+            lightHeld.enabled = false;
+        }
+        yield return new WaitForSeconds(toggleDuration);
+
+        lightHeld.enabled = true;
+    }
+
+    public void StartToggleLightCoroutine(LightScript lightHeld, float toggleDuration)
+    {
+        StopAllCoroutines();
+        StartCoroutine(TurnLightOffForTimer(lightHeld, toggleDuration));
+
+    }
+
 
     private void OnEnable()
     {

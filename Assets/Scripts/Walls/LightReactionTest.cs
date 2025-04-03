@@ -14,7 +14,7 @@ public class LightReactionTest : MonoBehaviour
     private ParticleSystem particles;
     private Dissolve _dissolveScript;
 
-    private List<LanternColor> colorsHittingNow = new List<LanternColor>(); //TODO: naghuty attributes, read only
+    private List<LanternColor> colorsHittingNow = new List<LanternColor>(); 
     private LanternColor[] colorTag;
 
     private bool _isExisting;
@@ -66,7 +66,6 @@ public class LightReactionTest : MonoBehaviour
 
 
         }
-
         
     }
 

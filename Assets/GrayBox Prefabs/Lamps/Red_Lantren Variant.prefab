@@ -16,6 +16,14 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2800136575880954262, guid: bec42108aa51ea441aedc9e9e1f6a836, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2800136575880954262, guid: bec42108aa51ea441aedc9e9e1f6a836, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6266807345727066932, guid: bec42108aa51ea441aedc9e9e1f6a836, type: 3}
       propertyPath: m_Name
       value: Red_Lantren Variant
