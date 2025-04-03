@@ -8,7 +8,7 @@ public class Player_Pickup_Controller : MonoBehaviour
     private GameObject _player;
     private bool _isHoldingObj;
     private Rigidbody _objectRigidbody;
-    private GameObject _objectThatGotPickedUp;
+    private GameObject _objectThatGotPickedUp; 
 
     [SerializeField] private CinemachineCamera _pickupCam;
     private float _defaultCameraTopClamp;
@@ -61,7 +61,7 @@ public class Player_Pickup_Controller : MonoBehaviour
         _playerContoller.CinemachineCameraTarget = _player;
     }
 
-    private void DropPickup()
+    private void DropPickup() // should be seperated to inputs and logic i think
     {
         if (_isHoldingObj && Input.GetKeyDown(KeyCode.F))
         {
@@ -82,7 +82,7 @@ public class Player_Pickup_Controller : MonoBehaviour
         _objectThatGotPickedUp.transform.SetParent(null);
     }
 
-    private void ResetDropMode()
+    private void ResetDropMode() //should probably change name to reflect changes to camera
     {
         _pickupCam.enabled = false;
         _playerContoller.TopClamp = _defaultCameraTopClamp;
@@ -90,7 +90,7 @@ public class Player_Pickup_Controller : MonoBehaviour
         _playerContoller.CinemachineCameraTarget = _playerCameraRoot;
     }
 
-    public void DropPickupInFrontOfWall(Vector3 dropPoint)
+    public void DropPickupInFrontOfWall(Vector3 dropPoint) 
     {
 
         if (_isHoldingObj)

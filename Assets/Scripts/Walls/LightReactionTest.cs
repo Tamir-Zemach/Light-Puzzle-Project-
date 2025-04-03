@@ -14,7 +14,7 @@ public class LightReactionTest : MonoBehaviour
     private ParticleSystem particles;
     private Dissolve _dissolveScript;
 
-    public List<LanternColor> colorsHittingNow = new List<LanternColor>(); //TODO: naghuty attributes, read only
+    private List<LanternColor> colorsHittingNow = new List<LanternColor>(); 
     private LanternColor[] colorTag;
 
     private bool _isExisting;
@@ -66,17 +66,16 @@ public class LightReactionTest : MonoBehaviour
 
 
         }
-
         
     }
 
     void Update()
     {
-        HandleCurrentColorHit();
+        CheckIfShouldExist();
         HandleParticleColor();
     }
 
-    public void Exist()
+    private void Exist()
     {
         if (!_isExisting)
         {
@@ -86,7 +85,7 @@ public class LightReactionTest : MonoBehaviour
         }
     }
 
-    public void DontExist()
+    private void DontExist()
     {
         if (_isExisting)
         {
@@ -97,7 +96,23 @@ public class LightReactionTest : MonoBehaviour
 
     }
 
-    private bool CompareListToArray(List<LanternColor> list, LanternColor[] lanternColorArray)
+    public void AddColorToList(LanternColor colorToAdd)
+    {
+        if (!colorsHittingNow.Contains(colorToAdd))
+        {
+            colorsHittingNow.Add(colorToAdd);
+        }
+    }
+
+    public void RemoveColorFromList(LanternColor colorToRemove)
+    {
+        if (colorsHittingNow.Contains(colorToRemove))
+        {
+            colorsHittingNow.Remove(colorToRemove);
+        }
+    }
+
+    private bool CompareListToColorTag(List<LanternColor> list, LanternColor[] lanternColorArray)
     {
 
 
@@ -114,15 +129,13 @@ public class LightReactionTest : MonoBehaviour
         return true;
     }
 
-
-
-    public void HandleCurrentColorHit()
+    public void CheckIfShouldExist()
     {
         if (colorsHittingNow == null)
         {
             Debug.LogError("colorsHittingnow is Null");
         }
-            if (CompareListToArray(colorsHittingNow, colorTag))
+            if (CompareListToColorTag(colorsHittingNow, colorTag))
             {
                 DontExist();
             }

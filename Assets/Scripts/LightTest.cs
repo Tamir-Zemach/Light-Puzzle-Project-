@@ -2,17 +2,13 @@ using Unity.VisualScripting;
 using UnityEditor.PackageManager;
 using UnityEngine;
 using UnityEngine.UIElements;
+using System.Collections;
 
-public class LightTest1 : MonoBehaviour
+public class LightScript : MonoBehaviour
 {
-    //raycast in direction of light, possibly cone raycast
-    //need the user to be able to choose the light color in inspector, or the ray cast to get the light from a light component as reference
-    //range should also effect light
 
-
-
-
-    [SerializeField] float maxRayCastDistance = 15f;
+    [SerializeField] float RayCastRange = 15f;
+    [SerializeField] float sphereCastRadius = 2f;
     [SerializeField] LayerMask IgnoredLayer;
     [SerializeField] LanternColor lanternColor;
 
@@ -20,84 +16,175 @@ public class LightTest1 : MonoBehaviour
 
 
     private LightReactionTest currentHitLightReactionScript;
-    private Light spotLightChild; // should it be child?
+    //private LightReactionTest lightReactionScriptHitBySphere;
+    private Light[] VisualLights;
+
+    private SphereCollider OverlapSphere;
+
+    private Color debugColor; //must be a better way to do this
 
     private void OnValidate()
     {
-        spotLightChild = GetComponentInChildren<Light>();
+
+        VisualLights = GetComponentsInChildren<Light>();
+
+        OverlapSphere = GetComponent<SphereCollider>();
 
         switch (lanternColor)
         {
             case LanternColor.Red:
-                spotLightChild.color = Color.red;
+                foreach (var light in VisualLights)
+                {
+                    light.color = Color.red;
+                    debugColor = Color.red;
+                }
                 break;
 
             case LanternColor.Yellow:
-                spotLightChild.color = Color.yellow;
+                foreach (var light in VisualLights)
+                {
+                    light.color = Color.yellow;
+                    debugColor = Color.yellow;
+                }
                 break;
 
             case LanternColor.Blue:
-                spotLightChild.color = Color.blue;
+                foreach (var light in VisualLights)
+                {
+                    light.color = Color.blue;
+                    debugColor = Color.blue;
+                }
                 break;
         }
+
+        OverlapSphere.radius = sphereCastRadius;
+    }
+
+    private void Awake()
+    {
+        OverlapSphere.isTrigger = true;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (this.enabled)
+        {
+            var lightReactionScript = other.GetComponent<LightReactionTest>();
+            if (lightReactionScript != null)
+            {
+                lightReactionScript.AddColorToList(lanternColor);
+            }
+        }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (this.enabled)
+        {
+            var lightReactionScript = other.GetComponent<LightReactionTest>();
+            if (lightReactionScript != null)
+            {
+                lightReactionScript.AddColorToList(lanternColor);
+            }
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (this.enabled)
+        {
+            var lightReactionScript = other.GetComponent<LightReactionTest>();
+            lightReactionScript?.RemoveColorFromList(lanternColor);
+        }
+       
     }
 
 
     void Update()
     {
+        RaycastForLightReaction();
+    }
 
+    private void OnDrawGizmos()
+    {
+        if (this.enabled)
+        {
+            Debug.DrawRay(transform.position, transform.forward * RayCastRange, debugColor);
+            Gizmos.color = debugColor;
+            Gizmos.DrawWireSphere(transform.position, sphereCastRadius);
+        }
+
+    }
+
+
+
+    private void RaycastForLightReaction()
+    {
         Physics.queriesHitTriggers = true;
 
         /* before checking for light Reaction script, make it null and remove color tag from the list - 
          * so that if it hits a different target it still removes colortag from the first hit*/
         if (currentHitLightReactionScript != null)
         {
-            if (currentHitLightReactionScript.colorsHittingNow.Contains(lanternColor))
-            {
-                currentHitLightReactionScript.colorsHittingNow.Remove(lanternColor);
-                currentHitLightReactionScript = null;
-            }
+            currentHitLightReactionScript.RemoveColorFromList(lanternColor);
+            currentHitLightReactionScript = null;
+
 
         }
 
-        if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hitInfo, maxRayCastDistance, ~IgnoredLayer))
+        bool isRaycastHitting = Physics.Raycast(transform.position, transform.forward, out RaycastHit hitInfo, RayCastRange, ~IgnoredLayer);
+
+
+        if (isRaycastHitting)
         {
-
-            
             var hitObject = hitInfo.transform;
-
-
 
             hitObject.TryGetComponent<LightReactionTest>(out currentHitLightReactionScript);
 
             if (currentHitLightReactionScript != null)
             {
-                if (!currentHitLightReactionScript.colorsHittingNow.Contains(lanternColor))
-                {
-                    currentHitLightReactionScript.colorsHittingNow.Add(lanternColor);
-                }
+                currentHitLightReactionScript.AddColorToList(lanternColor);
             }
         }
-
-
-
     }
 
-    private void OnDrawGizmos()
+    private IEnumerator TurnLightOffForTimer(LightScript lightHeld, float toggleDuration) 
     {
-        Debug.DrawRay(transform.position, transform.forward * maxRayCastDistance, spotLightChild.color);
+        if (lightHeld.enabled)
+        {
+            lightHeld.enabled = false;
+        }
+        yield return new WaitForSeconds(toggleDuration);
+
+        lightHeld.enabled = true;
     }
 
-    //Tamir added line:
-    //private void ParticleSpawnPosManager(Transform transform)
-    //{
-    //    _sparksParticleSystem.transform.position = transform.position;
-    //    _sparksParticleSystem.Play();
-    //}
-    //ParticleSpawnPosManager(hitInfo.transform);
-    //[SerializeField] ParticleSystem _sparksParticleSystem;
-    //        else
-    //    {
-    //        _sparksParticleSystem.Stop();
-    //    }
+    public void StartToggleLightCoroutine(LightScript lightHeld, float toggleDuration)
+    {
+        StopAllCoroutines();
+        StartCoroutine(TurnLightOffForTimer(lightHeld, toggleDuration));
+
+    }
+
+
+    private void OnEnable()
+    {
+        foreach (var light in VisualLights)
+        {
+            light.enabled = true;
+        }
+    }
+
+    private void OnDisable()
+    {
+        foreach(var light in VisualLights)
+        {
+            light.enabled = false;
+        }
+        if (currentHitLightReactionScript != null)
+        {
+            currentHitLightReactionScript.RemoveColorFromList(lanternColor);
+            currentHitLightReactionScript = null;
+        }
+    }
 }
