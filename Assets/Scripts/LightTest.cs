@@ -99,9 +99,12 @@ public class LightTest1 : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        Debug.DrawRay(transform.position, transform.forward * RayCastRange, debugColor);
-        Gizmos.color = debugColor;
-        Gizmos.DrawWireSphere(transform.position, sphereCastRadius);
+        if (this.enabled)
+        {
+            Debug.DrawRay(transform.position, transform.forward * RayCastRange, debugColor);
+            Gizmos.color = debugColor;
+            Gizmos.DrawWireSphere(transform.position, sphereCastRadius);
+        }
 
     }
 
@@ -158,8 +161,20 @@ public class LightTest1 : MonoBehaviour
         */
     }
 
+    private void OnEnable()
+    {
+        foreach (var light in VisualLights)
+        {
+            light.enabled = true;
+        }
+    }
+
     private void OnDisable()
     {
+        foreach(var light in VisualLights)
+        {
+            light.enabled = false;
+        }
         if (currentHitLightReactionScript != null)
         {
             currentHitLightReactionScript.RemoveColorFromList(lanternColor);
