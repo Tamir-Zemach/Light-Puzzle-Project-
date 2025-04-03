@@ -12,8 +12,7 @@ public class ToggleLight : MonoBehaviour
     [SerializeField] float toggleDuration = 2f;
     [SerializeField] Player_Pickup_Controller pickupController;
 
-    private void Update()
-    {
+
 
     private IEnumerator TurnLightOff(LightTest1 lightHeld)
     {
@@ -32,3 +31,4 @@ public class ToggleLight : MonoBehaviour
     //if it does, how does it remove the color from the list when its not hitting it anymore?
     //can maybe hold a list of objects its currently hitting, but does that help? 
     // i think it does because i can test for hit objects, and remove light color from list on reaction script when i remove the hit object from the light list
+}
