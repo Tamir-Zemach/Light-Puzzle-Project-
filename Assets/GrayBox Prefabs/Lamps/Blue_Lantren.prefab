@@ -5053,6 +5053,7 @@ GameObject:
   - component: {fileID: 6728128109047441378}
   - component: {fileID: 3717241431376081925}
   - component: {fileID: 3464784918607149713}
+  - component: {fileID: 6005081526874411948}
   m_Layer: 6
   m_Name: Blue_Lantren
   m_TagString: Untagged
@@ -5110,7 +5111,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62a345fefd704bc478f43f374c5678f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxRayCastDistance: 6
+  RayCastRange: 15
+  sphereCastRadius: 2
   IgnoredLayer:
     serializedVersion: 2
     m_Bits: 4
@@ -5163,6 +5165,27 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!135 &6005081526874411948
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6266807345727066932}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 2
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &9041337235504660621
 GameObject:
   m_ObjectHideFlags: 0

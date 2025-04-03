@@ -5,15 +5,9 @@ using UnityEngine.UIElements;
 
 public class LightTest1 : MonoBehaviour
 {
-    //raycast in direction of light, possibly cone raycast
-    //need the user to be able to choose the light color in inspector, or the ray cast to get the light from a light component as reference
-    //range should also effect light
 
-
-
-
-    [SerializeField] float maxRayCastDistance = 15f;
-    //[SerializeField] float sphereCastRadius = 2f;
+    [SerializeField] float RayCastRange = 15f;
+    [SerializeField] float sphereCastRadius = 2f;
     [SerializeField] LayerMask IgnoredLayer;
     [SerializeField] LanternColor lanternColor;
 
@@ -22,26 +16,78 @@ public class LightTest1 : MonoBehaviour
 
     private LightReactionTest currentHitLightReactionScript;
     //private LightReactionTest lightReactionScriptHitBySphere;
-    private Light spotLightChild; // should it be child?
+    private Light[] VisualLights;
+
+    private SphereCollider OverlapSphere;
+
+    private Color debugColor; //must be a better way to do this
 
     private void OnValidate()
     {
 
-        spotLightChild = GetComponentInChildren<Light>();
+        VisualLights = GetComponentsInChildren<Light>();
+
+        OverlapSphere = GetComponent<SphereCollider>();
 
         switch (lanternColor)
         {
             case LanternColor.Red:
-                spotLightChild.color = Color.red;
+                foreach (var light in VisualLights)
+                {
+                    light.color = Color.red;
+                    debugColor = Color.red;
+                }
                 break;
 
             case LanternColor.Yellow:
-                spotLightChild.color = Color.yellow;
+                foreach (var light in VisualLights)
+                {
+                    light.color = Color.yellow;
+                    debugColor = Color.yellow;
+                }
                 break;
 
             case LanternColor.Blue:
-                spotLightChild.color = Color.blue;
+                foreach (var light in VisualLights)
+                {
+                    light.color = Color.blue;
+                    debugColor = Color.blue;
+                }
                 break;
+        }
+
+        OverlapSphere.radius = sphereCastRadius;
+    }
+
+    private void Awake()
+    {
+        OverlapSphere.isTrigger = true;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        var lightReactionScript = other.GetComponent<LightReactionTest>();
+        if (lightReactionScript != null)
+        {
+            lightReactionScript.AddColorToList(lanternColor);
+        }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        var lightReactionScript = other.GetComponent<LightReactionTest>();
+        if (lightReactionScript != null)
+        {
+            lightReactionScript.AddColorToList(lanternColor);
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        var lightReactionScript = other.GetComponent<LightReactionTest>();
+        if (lightReactionScript != null)
+        {
+            lightReactionScript.RemoveColorFromList(lanternColor);
         }
     }
 
@@ -53,11 +99,13 @@ public class LightTest1 : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        Debug.DrawRay(transform.position, transform.forward * maxRayCastDistance, spotLightChild.color);
-        Gizmos.color = spotLightChild.color;
-        //Gizmos.DrawWireSphere(transform.position, sphereCastRadius);
+        Debug.DrawRay(transform.position, transform.forward * RayCastRange, debugColor);
+        Gizmos.color = debugColor;
+        Gizmos.DrawWireSphere(transform.position, sphereCastRadius);
 
     }
+
+
 
     private void RaycastForLightReaction()
     {
@@ -67,15 +115,13 @@ public class LightTest1 : MonoBehaviour
          * so that if it hits a different target it still removes colortag from the first hit*/
         if (currentHitLightReactionScript != null)
         {
-            if (currentHitLightReactionScript.colorsHittingNow.Contains(lanternColor))
-            {
-                currentHitLightReactionScript.colorsHittingNow.Remove(lanternColor);
-                currentHitLightReactionScript = null;
-            }
+            currentHitLightReactionScript.RemoveColorFromList(lanternColor);
+            currentHitLightReactionScript = null;
+
 
         }
 
-        bool isRaycastHitting = Physics.Raycast(transform.position, transform.forward, out RaycastHit hitInfo, maxRayCastDistance, ~IgnoredLayer);
+        bool isRaycastHitting = Physics.Raycast(transform.position, transform.forward, out RaycastHit hitInfo, RayCastRange, ~IgnoredLayer);
 
 
         if (isRaycastHitting)
@@ -86,10 +132,7 @@ public class LightTest1 : MonoBehaviour
 
             if (currentHitLightReactionScript != null)
             {
-                if (!currentHitLightReactionScript.colorsHittingNow.Contains(lanternColor))
-                {
-                    currentHitLightReactionScript.colorsHittingNow.Add(lanternColor);
-                }
+                currentHitLightReactionScript.AddColorToList(lanternColor);
             }
         }
 
@@ -117,14 +160,10 @@ public class LightTest1 : MonoBehaviour
 
     private void OnDisable()
     {
-        if(currentHitLightReactionScript != null)
+        if (currentHitLightReactionScript != null)
         {
-            if (currentHitLightReactionScript.colorsHittingNow.Contains(lanternColor))
-            {
-                currentHitLightReactionScript.colorsHittingNow.Remove(lanternColor);
-                currentHitLightReactionScript = null;
-            }
-
+            currentHitLightReactionScript.RemoveColorFromList(lanternColor);
+            currentHitLightReactionScript = null;
         }
     }
 }
