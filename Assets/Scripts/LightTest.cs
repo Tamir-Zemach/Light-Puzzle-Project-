@@ -24,7 +24,6 @@ public class LightTest1 : MonoBehaviour
 
     private void OnValidate()
     {
-
         spotLightChild = GetComponentInChildren<Light>();
 
         switch (lanternColor)
