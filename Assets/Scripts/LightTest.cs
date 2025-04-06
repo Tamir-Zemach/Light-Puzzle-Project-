@@ -163,16 +163,16 @@ public class LightScript : MonoBehaviour
         }
     }
 
-    //private void OnDisable()
-    //{
-    //    foreach(var light in VisualLights)
-    //    {
-    //        light.enabled = false;
-    //    }
-    //    if (currentHitLightReactionScript != null)
-    //    {
-    //        currentHitLightReactionScript.RemoveColorFromList(lanternColor);
-    //        currentHitLightReactionScript = null;
-    //    }
-    //}
+    private void OnDisable()
+    {
+        foreach (var light in VisualLights)
+        {
+            light.enabled = false;
+        }
+        if (currentHitLightReactionScript != null)
+        {
+            currentHitLightReactionScript.RemoveColorFromList(lanternColor);
+            currentHitLightReactionScript = null;
+        }
+    }
 }

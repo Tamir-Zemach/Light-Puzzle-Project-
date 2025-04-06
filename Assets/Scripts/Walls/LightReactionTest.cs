@@ -154,13 +154,13 @@ public class LightReactionTest : MonoBehaviour
         switch (colorsHittingNow)
         {
             case var _ when colorsHittingNow.Count == 0:
-                particles.Stop();
+                particles.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
                 break;
 
             case var _ when colorsHittingNow.Contains(LanternColor.Red) && colorsHittingNow.Count == 1:              
                 main.startColor = Color.red;
                 if(!particles.isEmitting)
-                    particles.Play();
+                particles.Play();
                 break;
 
             case var _ when colorsHittingNow.Contains(LanternColor.Blue) && colorsHittingNow.Count == 1:
@@ -186,7 +186,7 @@ public class LightReactionTest : MonoBehaviour
                 print("Puprle");
                 main.startColor = new Color(0.7490196f, 0.2509804f, 0.7490196f, 1f ); // purple
                 if (!particles.isEmitting)
-                    particles.Play();
+                particles.Play();
                 break;
 
             case var _ when colorsHittingNow.Contains(LanternColor.Yellow) && colorsHittingNow.Contains(LanternColor.Blue) && colorsHittingNow.Count == 2:
