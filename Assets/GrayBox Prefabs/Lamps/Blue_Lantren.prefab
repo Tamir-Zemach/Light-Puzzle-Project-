@@ -45,7 +45,7 @@ Light:
   m_Type: 2
   m_Color: {r: 0, g: 0, b: 1, a: 1}
   m_Intensity: 7
-  m_Range: 2
+  m_Range: 1
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -5234,11 +5234,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RayCastRange: 15
-  sphereCastRadius: 2
+  sphereCastRadius: 1
   IgnoredLayer:
     serializedVersion: 2
-    m_Bits: 4
+    m_Bits: 68
   lanternColor: 2
+  _lightIndex: {fileID: 9041337235504660621}
 --- !u!65 &3717241431376081925
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5306,7 +5307,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 2
+  m_Radius: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &9041337235504660621
 GameObject:

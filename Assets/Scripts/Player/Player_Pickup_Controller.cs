@@ -6,7 +6,6 @@ using UnityEngine;
 public class Player_Pickup_Controller : MonoBehaviour
 {
     private GameObject _player;
-    private bool _isHoldingObj;
     private Rigidbody _objectRigidbody;
     private GameObject _objectThatGotPickedUp; 
 
@@ -17,22 +16,19 @@ public class Player_Pickup_Controller : MonoBehaviour
 
     private CheckForPickables _checkForPickables;
     private ThirdPersonController _playerContoller;
+    private PlayerColliderHandler _playerColliderHandler;
 
     private void Awake()
     {
         _player = GameObject.FindGameObjectWithTag("Player");
         _playerContoller = gameObject.GetComponentInParent<ThirdPersonController>();
         _checkForPickables = gameObject.GetComponentInParent<CheckForPickables>();
+        _playerColliderHandler = gameObject.GetComponentInParent<PlayerColliderHandler>();
         _defaultCameraTopClamp = _playerContoller.TopClamp;
         _defaultCameraBottomClamp = _playerContoller.BottomClamp;
 
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        DropPickup();
-    }
 
     public void Pickup()
     {
@@ -40,7 +36,7 @@ public class Player_Pickup_Controller : MonoBehaviour
 
         SetPickupCameraMode();
 
-        _isHoldingObj = true;
+        //_playerColliderHandler.GrowPlayerCollider();
     }
     private void AttachPickedUpObject()
     {
@@ -61,18 +57,16 @@ public class Player_Pickup_Controller : MonoBehaviour
         _playerContoller.CinemachineCameraTarget = _player;
     }
 
-    private void DropPickup() // should be seperated to inputs and logic i think
+    public void DropPickup() // should be seperated to inputs and logic i think
     {
-        if (_isHoldingObj && Input.GetKeyDown(KeyCode.F))
-        {
 
             DetachPickedUpObject(_objectRigidbody);
 
-            ResetDropMode();
+            ResetCameraDropMode();
+
+           // _playerColliderHandler.ResetPlayerCollider();
 
             _objectThatGotPickedUp = null;
-            _isHoldingObj = false;
-        }
     }
 
     private void DetachPickedUpObject(Rigidbody objectRigidbody)
@@ -82,7 +76,7 @@ public class Player_Pickup_Controller : MonoBehaviour
         _objectThatGotPickedUp.transform.SetParent(null);
     }
 
-    private void ResetDropMode() //should probably change name to reflect changes to camera
+    private void ResetCameraDropMode() //should probably change name to reflect changes to camera
     {
         _pickupCam.enabled = false;
         _playerContoller.TopClamp = _defaultCameraTopClamp;
@@ -93,14 +87,10 @@ public class Player_Pickup_Controller : MonoBehaviour
     public void DropPickupInFrontOfWall(Vector3 dropPoint) 
     {
 
-        if (_isHoldingObj)
-        {
             DetachPickedUpObject(_objectRigidbody);
             _objectThatGotPickedUp.transform.position = dropPoint;
             _objectThatGotPickedUp = null;
-            _isHoldingObj = false;
-            ResetDropMode();
-        }
+            ResetCameraDropMode();
 
     }
 

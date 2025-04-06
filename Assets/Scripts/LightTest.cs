@@ -1,7 +1,5 @@
-using Unity.VisualScripting;
-using UnityEditor.PackageManager;
+
 using UnityEngine;
-using UnityEngine.UIElements;
 using System.Collections;
 
 public class LightScript : MonoBehaviour
@@ -12,7 +10,8 @@ public class LightScript : MonoBehaviour
     [SerializeField] LayerMask IgnoredLayer;
     [SerializeField] LanternColor lanternColor;
 
-
+    //Tamir Added Line:
+    [SerializeField] private GameObject _lightIndex;
 
 
     private LightReactionTest currentHitLightReactionScript;
@@ -23,12 +22,13 @@ public class LightScript : MonoBehaviour
 
     private Color debugColor; //must be a better way to do this
 
-    private void OnValidate()
+    private void Awake()
     {
 
         VisualLights = GetComponentsInChildren<Light>();
 
         OverlapSphere = GetComponent<SphereCollider>();
+        OverlapSphere.isTrigger = true;
 
         switch (lanternColor)
         {
@@ -60,20 +60,14 @@ public class LightScript : MonoBehaviour
         OverlapSphere.radius = sphereCastRadius;
     }
 
-    private void Awake()
-    {
-        OverlapSphere.isTrigger = true;
-    }
+
 
     private void OnTriggerEnter(Collider other)
     {
         if (this.enabled)
         {
             var lightReactionScript = other.GetComponent<LightReactionTest>();
-            if (lightReactionScript != null)
-            {
-                lightReactionScript.AddColorToList(lanternColor);
-            }
+            lightReactionScript?.AddColorToList(lanternColor);
         }
     }
 
@@ -82,10 +76,7 @@ public class LightScript : MonoBehaviour
         if (this.enabled)
         {
             var lightReactionScript = other.GetComponent<LightReactionTest>();
-            if (lightReactionScript != null)
-            {
-                lightReactionScript.AddColorToList(lanternColor);
-            }
+            lightReactionScript?.AddColorToList(lanternColor);
         }
     }
 
@@ -128,8 +119,6 @@ public class LightScript : MonoBehaviour
         {
             currentHitLightReactionScript.RemoveColorFromList(lanternColor);
             currentHitLightReactionScript = null;
-
-
         }
 
         bool isRaycastHitting = Physics.Raycast(transform.position, transform.forward, out RaycastHit hitInfo, RayCastRange, ~IgnoredLayer);
@@ -141,10 +130,7 @@ public class LightScript : MonoBehaviour
 
             hitObject.TryGetComponent<LightReactionTest>(out currentHitLightReactionScript);
 
-            if (currentHitLightReactionScript != null)
-            {
-                currentHitLightReactionScript.AddColorToList(lanternColor);
-            }
+            currentHitLightReactionScript?.AddColorToList(lanternColor);
         }
     }
 
@@ -153,10 +139,12 @@ public class LightScript : MonoBehaviour
         if (lightHeld.enabled)
         {
             lightHeld.enabled = false;
+            _lightIndex.SetActive(false);
         }
         yield return new WaitForSeconds(toggleDuration);
 
         lightHeld.enabled = true;
+        _lightIndex.SetActive(true);
     }
 
     public void StartToggleLightCoroutine(LightScript lightHeld, float toggleDuration)
@@ -175,16 +163,16 @@ public class LightScript : MonoBehaviour
         }
     }
 
-    private void OnDisable()
-    {
-        foreach(var light in VisualLights)
-        {
-            light.enabled = false;
-        }
-        if (currentHitLightReactionScript != null)
-        {
-            currentHitLightReactionScript.RemoveColorFromList(lanternColor);
-            currentHitLightReactionScript = null;
-        }
-    }
+    //private void OnDisable()
+    //{
+    //    foreach(var light in VisualLights)
+    //    {
+    //        light.enabled = false;
+    //    }
+    //    if (currentHitLightReactionScript != null)
+    //    {
+    //        currentHitLightReactionScript.RemoveColorFromList(lanternColor);
+    //        currentHitLightReactionScript = null;
+    //    }
+    //}
 }

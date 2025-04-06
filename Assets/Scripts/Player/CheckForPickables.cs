@@ -7,10 +7,13 @@ public class CheckForPickables : MonoBehaviour
     public float _rayLength = 0.9f;
     public RaycastHit _hitInfo;
     public LayerMask _pickableItemLayer;
-    private bool _pickedUpGameObject;
+    public bool _isHoldingObj;
     private OutlineHandler _outlineHandler;
     [SerializeField] private TextMeshPro _textToAppear;
     private Player_Pickup_Controller _pickupController;
+
+    //TODO: add an ignore layer for invisible colliders
+
     private void Awake()
     {
         _pickupController = gameObject.GetComponent<Player_Pickup_Controller>();
@@ -21,10 +24,11 @@ public class CheckForPickables : MonoBehaviour
     {
         Debug.DrawRay(_rayStartPos.transform.position, _rayStartPos.transform.forward * _rayLength, Color.red);
         CheckingForPickupsWithRay();
+        HandleDropPickup();
     }
     public void CheckingForPickupsWithRay()
     {
-        if (IsObjectPickable())
+        if (IsObjectPickable() && !_isHoldingObj)
         {
             _outlineHandler.ShowPickupVisibleHint();
             _outlineHandler._currentOutLine = _hitInfo.collider.GetComponent<Outline>();
@@ -45,7 +49,7 @@ public class CheckForPickables : MonoBehaviour
             out _hitInfo,
             _rayLength,
             _pickableItemLayer
-        ) && !_pickedUpGameObject;
+        );
     }   
     public void HandlePickup()
     {
@@ -53,8 +57,17 @@ public class CheckForPickables : MonoBehaviour
         {
             _pickupController.Pickup();
             _outlineHandler.ResetHighlight();
+            _isHoldingObj = true;
+        }
+
+    }
+    private void HandleDropPickup()
+    {
+        if (_isHoldingObj && Input.GetKeyDown(KeyCode.F))
+        {
+            _pickupController.DropPickup();
+            _isHoldingObj = false;
         }
     }
-
 
 }
