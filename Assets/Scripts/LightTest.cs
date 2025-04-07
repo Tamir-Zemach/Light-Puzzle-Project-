@@ -21,7 +21,7 @@ public class LightScript : MonoBehaviour
 
     private SphereCollider OverlapSphere;
 
-    private Color debugColor; //must be a better way to do this
+    private Color gizmosDebugColor; //must be a better way to do this
 
     private void OnValidate()
     {
@@ -36,7 +36,7 @@ public class LightScript : MonoBehaviour
                 foreach (var light in VisualLights)
                 {
                     light.color = Color.red;
-                    debugColor = Color.red;
+                    gizmosDebugColor = Color.red;
                 }
                 break;
 
@@ -44,7 +44,7 @@ public class LightScript : MonoBehaviour
                 foreach (var light in VisualLights)
                 {
                     light.color = Color.yellow;
-                    debugColor = Color.yellow;
+                    gizmosDebugColor = Color.yellow;
                 }
                 break;
 
@@ -52,7 +52,7 @@ public class LightScript : MonoBehaviour
                 foreach (var light in VisualLights)
                 {
                     light.color = Color.blue;
-                    debugColor = Color.blue;
+                    gizmosDebugColor = Color.blue;
                 }
                 break;
         }
@@ -62,6 +62,35 @@ public class LightScript : MonoBehaviour
 
     private void Awake()
     {
+        VisualLights = GetComponentsInChildren<Light>();
+
+        OverlapSphere = GetComponent<SphereCollider>();
+
+        switch (lanternColor)
+        {
+            case LanternColor.Red:
+                foreach (var light in VisualLights)
+                {
+                    light.color = Color.red;
+                }
+                break;
+
+            case LanternColor.Yellow:
+                foreach (var light in VisualLights)
+                {
+                    light.color = Color.yellow;
+                }
+                break;
+
+            case LanternColor.Blue:
+                foreach (var light in VisualLights)
+                {
+                    light.color = Color.blue;
+                }
+                break;
+        }
+
+        OverlapSphere.radius = sphereCastRadius;
         OverlapSphere.isTrigger = true;
     }
 
@@ -109,8 +138,8 @@ public class LightScript : MonoBehaviour
     {
         if (this.enabled)
         {
-            Debug.DrawRay(transform.position, transform.forward * RayCastRange, debugColor);
-            Gizmos.color = debugColor;
+            Debug.DrawRay(transform.position, transform.forward * RayCastRange, gizmosDebugColor);
+            Gizmos.color = gizmosDebugColor;
             Gizmos.DrawWireSphere(transform.position, sphereCastRadius);
         }
 

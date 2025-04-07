@@ -6,9 +6,9 @@ public class SeperatingWall : MonoBehaviour
 
     [SerializeField] private LayerMask pickupLayer;
     [SerializeField] private Player_Pickup_Controller pickupController;
-    private Vector3 _dropPoint;
     [SerializeField] private float _dropDistance;
 
+    private Vector3 _dropPoint;
     private void OnValidate()
     {
         _dropPoint = transform.position + transform.forward * _dropDistance;
@@ -16,6 +16,7 @@ public class SeperatingWall : MonoBehaviour
     private void Awake()
     {
         pickupController = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<Player_Pickup_Controller>();
+        _dropPoint = transform.position + transform.forward * _dropDistance;
     }
 
     private void OnTriggerEnter(Collider other)
