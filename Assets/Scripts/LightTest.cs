@@ -10,8 +10,6 @@ public class LightScript : MonoBehaviour
     [SerializeField] LayerMask IgnoredLayer;
     [SerializeField] LanternColor lanternColor;
 
-    //Tamir Added Line:
-    //[SerializeField] private GameObject _lightIndex;
 
 
     private LightReactionTest currentHitLightReactionScript;
@@ -139,12 +137,10 @@ public class LightScript : MonoBehaviour
         if (lightHeld.enabled)
         {
             lightHeld.enabled = false;
-            //_lightIndex.SetActive(false);
         }
         yield return new WaitForSeconds(toggleDuration);
 
         lightHeld.enabled = true;
-        //_lightIndex.SetActive(true);
     }
 
     public void StartToggleLightCoroutine(LightScript lightHeld, float toggleDuration)

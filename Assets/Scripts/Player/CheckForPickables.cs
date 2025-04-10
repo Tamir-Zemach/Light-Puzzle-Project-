@@ -11,18 +11,22 @@ public class CheckForPickables : MonoBehaviour
     private OutlineHandler _outlineHandler;
     [SerializeField] private TextMeshPro _textToAppear;
     private Player_Pickup_Controller _pickupController;
+    private Camera _camera;
+    private Vector3 _screenCenter = new Vector3(Screen.width / 2, Screen.height / 2, 0);
+    
+
 
     //TODO: add an ignore layer for invisible colliders
 
     private void Awake()
     {
+        _camera = Camera.main;
         _pickupController = gameObject.GetComponent<Player_Pickup_Controller>();
         _outlineHandler = gameObject.GetComponent<OutlineHandler>();
         _textToAppear = gameObject.transform.GetComponentInChildren<TextMeshPro>();
     }
     private void Update()
     {
-        Debug.DrawRay(_rayStartPos.transform.position, _rayStartPos.transform.forward * _rayLength, Color.red);
         CheckingForPickupsWithRay();
         HandleDropPickup();
     }
@@ -43,9 +47,11 @@ public class CheckForPickables : MonoBehaviour
     }
     public bool IsObjectPickable()
     {
+       
+        Ray ray = _camera.ScreenPointToRay(_screenCenter);
+        Debug.DrawRay(ray.origin, ray.direction * _rayLength, Color.red);
         return Physics.Raycast(
-            _rayStartPos.transform.position,
-            _rayStartPos.transform.forward,
+            ray,
             out _hitInfo,
             _rayLength,
             _pickableItemLayer
