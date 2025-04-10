@@ -72,8 +72,8 @@ public class Player_Pickup_Controller : MonoBehaviour
     private void DetachPickedUpObject(Rigidbody objectRigidbody)
     {
         objectRigidbody.constraints = RigidbodyConstraints.FreezeRotation;
-        objectRigidbody.linearVelocity = Vector3.zero;
         _objectThatGotPickedUp.transform.SetParent(null);
+        objectRigidbody.linearVelocity = Vector3.zero;
     }
 
     private void ResetCameraDropMode() //should probably change name to reflect changes to camera

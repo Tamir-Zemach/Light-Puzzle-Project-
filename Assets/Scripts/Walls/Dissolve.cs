@@ -33,7 +33,6 @@ namespace DissolveExample
         {
             StopAllCoroutines();
             GetDissolveValue();
-            Debug.Log(_currentDissolveValue);
             currentCoroutine = StartCoroutine(AddValueWithLerp());
         }
         IEnumerator AddValueWithLerp()

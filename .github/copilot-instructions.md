@@ -2,7 +2,7 @@
 - Project name: light puzzle project
 - Unity version: Unity 6000.0.35f1
 - Active game object:
-  - Name: Light Probe Group
+  - Name: Blue_Lantren
   - Tag: Untagged
-  - Layer: Default
+  - Layer: Pickupable Item
 <!-- UNITY CODE ASSIST INSTRUCTIONS END -->
