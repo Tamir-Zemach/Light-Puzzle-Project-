@@ -12,6 +12,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Lightable_Purple Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 1562182743115863578, guid: be4f374ce0298844bb82d7d7451abb64, type: 3}
+      propertyPath: outlineColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1562182743115863578, guid: be4f374ce0298844bb82d7d7451abb64, type: 3}
+      propertyPath: outlineColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1562182743115863578, guid: be4f374ce0298844bb82d7d7451abb64, type: 3}
+      propertyPath: outlineColor.r
+      value: 0.4583335
+      objectReference: {fileID: 0}
     - target: {fileID: 2091087298454537636, guid: be4f374ce0298844bb82d7d7451abb64, type: 3}
       propertyPath: colorNeeded
       value: 4
@@ -60,6 +72,10 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: a520b81e2bcd96a49ac47d69723636ab, type: 2}
+    - target: {fileID: 7133977471852300033, guid: be4f374ce0298844bb82d7d7451abb64, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 2273e48dd1452fc4487dada73e5aae63, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

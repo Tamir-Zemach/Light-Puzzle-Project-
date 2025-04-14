@@ -81,7 +81,9 @@ public class Outline : MonoBehaviour
 	private void Awake()
 	{
 		// Cache renderers
-		renderers = GetComponentsInChildren<Renderer>();
+		renderers = GetComponentsInChildren<Renderer>().
+	    Where(renderer => !(renderer is ParticleSystemRenderer))
+        .ToArray(); ;
 
 		// Instantiate outline materials
 		outlineMaskMaterial = Instantiate(Resources.Load<Material>(@"Materials/OutlineMask"));
@@ -121,19 +123,19 @@ public class Outline : MonoBehaviour
 		}
 	}
 
-	private void OnDisable()
-	{
-		foreach (var renderer in renderers)
-		{
-			// Remove outline shaders
-			var materials = renderer.sharedMaterials.ToList();
+	//private void OnDisable()
+	//{
+	//	foreach (var renderer in renderers)
+	//	{
+	//		// Remove outline shaders
+	//		var materials = renderer.sharedMaterials.ToList();
 
-			materials.Remove(outlineMaskMaterial);
-			materials.Remove(outlineFillMaterial);
+	//		materials.Remove(outlineMaskMaterial);
+	//		materials.Remove(outlineFillMaterial);
 
-			renderer.materials = materials.ToArray();
-		}
-	}
+	//		renderer.materials = materials.ToArray();
+	//	}
+	//}
 
 	private void OnDestroy()
 	{

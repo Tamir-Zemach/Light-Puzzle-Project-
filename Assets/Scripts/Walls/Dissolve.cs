@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace DissolveExample
@@ -14,21 +15,38 @@ namespace DissolveExample
         private const float _maxDissolveValue = 1;
         private const float _minDissolveValue = 0;
         private Coroutine currentCoroutine;
-        void Start()
+
+        //void Awake()
+        //{
+        //    var renders = GetComponentsInChildren<Renderer>();
+
+        //    for (int i = 0; i < renders.Length; i++)
+        //    {
+        //        if (renders[i].TryGetComponent<ParticleSystem>(out ParticleSystem p) == false)
+        //        {
+        //            foreach (var material in renders[i].materials)
+        //            {
+        //                // Check if the material has the "_Dissolve" property
+        //                if (material.HasProperty("_Dissolve"))
+        //                {
+        //                    materials.Add(material);
+        //                }
+        //            }
+        //        }
+        //    }
+        //}
+
+
+        // does the same purpse - but optimaized
+        void Awake()
         {
-            var renders = GetComponentsInChildren<Renderer>();
-            
-            for (int i = 0; i < renders.Length; i++)
-            {
-
-                if (renders[i].TryGetComponent<ParticleSystem>(out ParticleSystem p) == false)
-                {
-                    materials.AddRange(renders[i].materials);
-                }
-
-            }
+            materials.AddRange(
+                GetComponentsInChildren<Renderer>()
+                .Where(r => !(r is ParticleSystemRenderer))
+                .SelectMany(r => r.materials)
+                .Where(m => m.HasProperty("_Dissolve"))
+            );
         }
-
         public void _Dissolve()
         {
             StopAllCoroutines();
@@ -79,7 +97,10 @@ namespace DissolveExample
         {
             for (int i = 0; i < materials.Count; i++)
             {
-                _currentDissolveValue = materials[i].GetFloat("_Dissolve");
+                if (materials[i].HasProperty("_Dissolve"))
+                {
+                    _currentDissolveValue = materials[i].GetFloat("_Dissolve");
+                }
             }
         }
 
