@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Brown
+  m_Name: Orange
   m_Shader: {fileID: -6465566751694194690, guid: 2c6e52535f17dfc4b8e0bb3d1e91aea4, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -62,7 +62,7 @@ Material:
     - _QueueOffset: 0
     - _Smoothness: 0.932
     m_Colors:
-    - _BaseColor: {r: 1, g: 0.45229992, b: 0.13333334, a: 1}
+    - _BaseColor: {r: 1, g: 0.46666667, b: 0.11372549, a: 1}
     - _EdgeColor: {r: 0.9494723, g: 3.9999995, b: 0, a: 0}
     - _NoiseUVSpeed: {r: 0, g: 0, b: 0, a: 0}
     - _Offest: {r: 0, g: 0, b: 0, a: 0}

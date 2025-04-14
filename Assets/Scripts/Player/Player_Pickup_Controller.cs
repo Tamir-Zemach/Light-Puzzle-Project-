@@ -16,14 +16,12 @@ public class Player_Pickup_Controller : MonoBehaviour
 
     private CheckForPickables _checkForPickables;
     private ThirdPersonController _playerContoller;
-    private PlayerColliderHandler _playerColliderHandler;
 
     private void Awake()
     {
         _player = GameObject.FindGameObjectWithTag("Player");
         _playerContoller = gameObject.GetComponentInParent<ThirdPersonController>();
         _checkForPickables = gameObject.GetComponentInParent<CheckForPickables>();
-        _playerColliderHandler = gameObject.GetComponentInParent<PlayerColliderHandler>();
         _defaultCameraTopClamp = _playerContoller.TopClamp;
         _defaultCameraBottomClamp = _playerContoller.BottomClamp;
 
@@ -36,7 +34,6 @@ public class Player_Pickup_Controller : MonoBehaviour
 
         SetPickupCameraMode();
 
-        //_playerColliderHandler.GrowPlayerCollider();
     }
     private void AttachPickedUpObject()
     {
@@ -63,8 +60,6 @@ public class Player_Pickup_Controller : MonoBehaviour
             DetachPickedUpObject(_objectRigidbody);
 
             ResetCameraDropMode();
-
-           // _playerColliderHandler.ResetPlayerCollider();
 
             _objectThatGotPickedUp = null;
     }

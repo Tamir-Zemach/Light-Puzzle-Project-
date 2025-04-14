@@ -72,6 +72,7 @@ public class CheckForPickables : MonoBehaviour
         if (_isHoldingObj && Input.GetKeyDown(KeyCode.F))
         {
             _pickupController.DropPickup();
+            _outlineHandler.ResetHighlight();
             _isHoldingObj = false;
         }
     }
