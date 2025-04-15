@@ -541,13 +541,21 @@ PrefabInstance:
       propertyPath: InitialModule.startColor.maxColor.r
       value: 0.7490196
       objectReference: {fileID: 0}
+    - target: {fileID: 4665668212337271970, guid: bec42108aa51ea441aedc9e9e1f6a836, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 0d62b43727b578d4296430784e840c5e, type: 2}
+    - target: {fileID: 4665668212337271970, guid: bec42108aa51ea441aedc9e9e1f6a836, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 0d62b43727b578d4296430784e840c5e, type: 2}
     - target: {fileID: 6266807345727066932, guid: bec42108aa51ea441aedc9e9e1f6a836, type: 3}
       propertyPath: m_Name
       value: Blue_Lantren
       objectReference: {fileID: 0}
     - target: {fileID: 7745614383068539605, guid: bec42108aa51ea441aedc9e9e1f6a836, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.378
+      value: -4.303
       objectReference: {fileID: 0}
     - target: {fileID: 7745614383068539605, guid: bec42108aa51ea441aedc9e9e1f6a836, type: 3}
       propertyPath: m_LocalPosition.y
@@ -555,7 +563,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7745614383068539605, guid: bec42108aa51ea441aedc9e9e1f6a836, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -10.667
+      value: -10.17
       objectReference: {fileID: 0}
     - target: {fileID: 7745614383068539605, guid: bec42108aa51ea441aedc9e9e1f6a836, type: 3}
       propertyPath: m_LocalRotation.w
