@@ -18,6 +18,7 @@ public class LightReactionTest : MonoBehaviour
     private LanternColor[] colorTag;
 
     private bool _isExisting;
+    public bool _objectInCollider;
 
     private void Awake()
     {
@@ -77,7 +78,7 @@ public class LightReactionTest : MonoBehaviour
 
     private void Exist()
     {
-        if (!_isExisting)
+        if (!_isExisting && !_objectInCollider)
         {
             _dissolveScript.UnDissolve();
             col.isTrigger = false;
@@ -153,7 +154,7 @@ public class LightReactionTest : MonoBehaviour
         //the color that is hitting and use it in particle system and in existing
         switch (colorsHittingNow)
         {
-            case var _ when colorsHittingNow.Count == 0:
+            case var _ when colorsHittingNow.Count == 0 && !_objectInCollider:
                 particles.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
                 break;
 

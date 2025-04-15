@@ -70,6 +70,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   colorNeeded: 3
+  _objectInCollider: 0
 --- !u!114 &-7224453985505509178
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -140,6 +141,8 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 9763b800dd61492459138fc9c3ab5fc3, type: 2}
+  - {fileID: 2100000, guid: 76cd05632b4b40d4792e88dfc8642ebe, type: 2}
+  - {fileID: 2100000, guid: 9896b466a94e77148ba5568e53184928, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -180,6 +183,10 @@ PrefabInstance:
     - target: {fileID: 2247875154353871091, guid: 3490cfb196d8e264dbaf79a44becf160, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 65
+      objectReference: {fileID: 0}
+    - target: {fileID: 3523901136221820998, guid: 3490cfb196d8e264dbaf79a44becf160, type: 3}
+      propertyPath: looping
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3523901136221820998, guid: 3490cfb196d8e264dbaf79a44becf160, type: 3}
       propertyPath: playOnAwake
