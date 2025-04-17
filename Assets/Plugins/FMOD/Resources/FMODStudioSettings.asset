@@ -607,10 +607,10 @@ MonoBehaviour:
   m_Name: FMODStudioSettings
   m_EditorClassIdentifier: 
   switchSettingsMigration: 1
-  HasSourceProject: 1
-  HasPlatforms: 1
+  HasSourceProject: 0
+  HasPlatforms: 0
   sourceProjectPath: FmodAssets/Fmod Project/Fisherman.fspro
-  sourceBankPath: FmodAssets/Fmod Project/Build
+  sourceBankPath: ../../../../../FMOD Recovery Test/FmodAssets/Fmod Project/Build/Desktop
   sourceBankPathUnformatted: 
   BankRefreshCooldown: 5
   ShowBankRefreshWindow: 1
