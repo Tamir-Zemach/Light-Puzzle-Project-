@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7829897036987938696}
   - component: {fileID: 2091087298454537636}
   - component: {fileID: -7224453985505509178}
+  - component: {fileID: 7816015612585698374}
   m_Layer: 7
   m_Name: Lightable_Blue
   m_TagString: Untagged
@@ -84,6 +85,37 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _dissolveTime: 2
+--- !u!114 &7816015612585698374
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 242582705795283664}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 469968716
+      Data2: 1152359708
+      Data3: 1796304790
+      Data4: 13495279
+    Path: event:/SFX/Dissolve(Crackle)
+  Event: 
+  EventPlayTrigger: 0
+  EventStopTrigger: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 1
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 6.9
 --- !u!1 &375742418902724708
 GameObject:
   m_ObjectHideFlags: 0

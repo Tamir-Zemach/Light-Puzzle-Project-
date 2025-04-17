@@ -1,3 +1,4 @@
+using FMODUnity;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,6 +16,10 @@ namespace DissolveExample
         private const float _maxDissolveValue = 1;
         private const float _minDissolveValue = 0;
         private Coroutine currentCoroutine;
+
+        //audio vars
+        private StudioEventEmitter emitter;
+
 
         //void Awake()
         //{
@@ -47,12 +52,17 @@ namespace DissolveExample
                 .Where(m => m.HasProperty("_Dissolve"))
             );
         }
+
+        private void Start()
+        {
+            emitter = AudioManager.instance.InitializeEventEmitter(FmodEvents.instance.Dissolve, this.gameObject);
+        }
         public void _Dissolve()
         {
             StopAllCoroutines();
             GetDissolveValue();
             currentCoroutine = StartCoroutine(AddValueWithLerp());
-            AudioManager.instance.playOneShot(FmodEvents.instance.Dissolve, transform.position);
+            emitter.Play();
         }
         IEnumerator AddValueWithLerp()
         {
@@ -67,12 +77,14 @@ namespace DissolveExample
                 yield return null;
             }
             SetDissolveValue(_maxDissolveValue);
+            emitter.Stop();
         }
         public void UnDissolve()
         {
             StopAllCoroutines();
             GetDissolveValue();
             currentCoroutine = StartCoroutine(SubstractValueWithLerp());
+            emitter.Stop();
         }
         IEnumerator SubstractValueWithLerp()
         {
@@ -86,6 +98,7 @@ namespace DissolveExample
                 yield return null;
             }
             SetDissolveValue(_minDissolveValue);
+            emitter.Stop();
         }
         public void SetDissolveValue(float value)
         {
