@@ -52,6 +52,7 @@ namespace DissolveExample
             StopAllCoroutines();
             GetDissolveValue();
             currentCoroutine = StartCoroutine(AddValueWithLerp());
+            AudioManager.instance.playOneShot(FmodEvents.instance.Dissolve, transform.position);
         }
         IEnumerator AddValueWithLerp()
         {

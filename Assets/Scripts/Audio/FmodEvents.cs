@@ -4,6 +4,9 @@ using FMODUnity;
 public class FmodEvents : MonoBehaviour
 {
 
+    [field: Header("SFX")]
+    [field: SerializeField] public EventReference Dissolve { get; private set; }
+
     [field: Header("Player SFX")]
     [field: SerializeField] public EventReference playerFootstep { get; private set; }
     [field: SerializeField] public EventReference playerLand { get; private set; }
@@ -13,6 +16,8 @@ public class FmodEvents : MonoBehaviour
 
     [field: Header("Audio Queues")]
     [field: SerializeField] public EventReference ChildThemeQueue { get; private set; }
+
+
 
 
 

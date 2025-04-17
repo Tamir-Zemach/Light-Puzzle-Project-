@@ -12501,16 +12501,36 @@ PrefabInstance:
       value: Audio Manager
       objectReference: {fileID: 0}
     - target: {fileID: 8984879878268068712, guid: bbe862405b9460c469ed559638f0bbb4, type: 3}
+      propertyPath: <Dissolve>k__BackingField.Path
+      value: event:/SFX/Dissolve
+      objectReference: {fileID: 0}
+    - target: {fileID: 8984879878268068712, guid: bbe862405b9460c469ed559638f0bbb4, type: 3}
       propertyPath: <windAndWaves>k__BackingField.Path
-      value: event:/Ambience Wind And Waves
+      value: event:/Ambience/Ambience Wind And Waves
+      objectReference: {fileID: 0}
+    - target: {fileID: 8984879878268068712, guid: bbe862405b9460c469ed559638f0bbb4, type: 3}
+      propertyPath: <Dissolve>k__BackingField.Guid.Data1
+      value: 555009344
+      objectReference: {fileID: 0}
+    - target: {fileID: 8984879878268068712, guid: bbe862405b9460c469ed559638f0bbb4, type: 3}
+      propertyPath: <Dissolve>k__BackingField.Guid.Data2
+      value: 1311414572
+      objectReference: {fileID: 0}
+    - target: {fileID: 8984879878268068712, guid: bbe862405b9460c469ed559638f0bbb4, type: 3}
+      propertyPath: <Dissolve>k__BackingField.Guid.Data3
+      value: 1143927221
+      objectReference: {fileID: 0}
+    - target: {fileID: 8984879878268068712, guid: bbe862405b9460c469ed559638f0bbb4, type: 3}
+      propertyPath: <Dissolve>k__BackingField.Guid.Data4
+      value: 365925482
       objectReference: {fileID: 0}
     - target: {fileID: 8984879878268068712, guid: bbe862405b9460c469ed559638f0bbb4, type: 3}
       propertyPath: <playerFootstep>k__BackingField.Path
-      value: event:/Player_Footsteps
+      value: event:/SFX/Player/Player_Footsteps
       objectReference: {fileID: 0}
     - target: {fileID: 8984879878268068712, guid: bbe862405b9460c469ed559638f0bbb4, type: 3}
       propertyPath: <ChildThemeQueue>k__BackingField.Path
-      value: event:/Child_Theme
+      value: event:/Music/Child_Theme
       objectReference: {fileID: 0}
     - target: {fileID: 8984879878268068712, guid: bbe862405b9460c469ed559638f0bbb4, type: 3}
       propertyPath: <windAndWaves>k__BackingField.Guid.Data1
