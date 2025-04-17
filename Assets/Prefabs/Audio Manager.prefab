@@ -53,11 +53,11 @@ MonoBehaviour:
     Path: event:/Footsteps
   <playerLand>k__BackingField:
     Guid:
-      Data1: 489196187
-      Data2: 1088851875
-      Data3: 1069808303
-      Data4: -638702277
-    Path: event:/Player_Land
+      Data1: 375388462
+      Data2: 1197388154
+      Data3: 533029049
+      Data4: 1373730226
+    Path: event:/SFX/Player/Player_Land
   <windAndWaves>k__BackingField:
     Guid:
       Data1: 1372824271
