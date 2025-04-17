@@ -65,6 +65,13 @@ MonoBehaviour:
       Data3: -991993445
       Data4: 564939524
     Path: event:/Ambient Waves and Wind
+  <ChildThemeQueue>k__BackingField:
+    Guid:
+      Data1: -1941585773
+      Data2: 1129254779
+      Data3: -1196529242
+      Data4: 1250292354
+    Path: event:/AudioQueue01
 --- !u!1 &4550491143116599560
 GameObject:
   m_ObjectHideFlags: 0

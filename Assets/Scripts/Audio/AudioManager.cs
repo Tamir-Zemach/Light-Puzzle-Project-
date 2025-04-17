@@ -59,7 +59,13 @@ public class AudioManager : MonoBehaviour
     private void InitializeAmbience(EventReference ambientEventReference)
     {
         ambienceEventInstance = CreateEventInstance(ambientEventReference);
+        SetAmbienceParameter("ambience_intensity", 1);
         ambienceEventInstance.start();
+    }
+
+    public void SetAmbienceParameter(string parameterName, float parameterValue)
+    {
+        ambienceEventInstance.setParameterByName(parameterName, parameterValue);
     }
 
     public void playOneShot(EventReference sound, Vector3 worldPos)
