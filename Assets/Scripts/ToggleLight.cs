@@ -17,7 +17,7 @@ public class ToggleLight : MonoBehaviour
     private void OnTriggerEnter(Collider other) 
     {
         var lightToToggle = other.GetComponent<LightScript>();
-        lightToToggle?.StartToggleLightCoroutine(lightToToggle, toggleDuration);
+        lightToToggle?.StartToggleLightCoroutine(toggleDuration);
 
     }
 

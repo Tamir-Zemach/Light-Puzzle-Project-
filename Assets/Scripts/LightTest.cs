@@ -132,21 +132,21 @@ public class LightScript : MonoBehaviour
         }
     }
 
-    private IEnumerator TurnLightOffForTimer(LightScript lightHeld, float toggleDuration) 
+    private IEnumerator TurnLightOffForTimer( float toggleDuration) 
     {
-        if (lightHeld.enabled)
+        if (this.enabled)
         {
-            lightHeld.enabled = false;
+            this.enabled = false;
         }
         yield return new WaitForSeconds(toggleDuration);
 
-        lightHeld.enabled = true;
+        this.enabled = true;
     }
 
-    public void StartToggleLightCoroutine(LightScript lightHeld, float toggleDuration)
+    public void StartToggleLightCoroutine(float toggleDuration)
     {
         StopAllCoroutines();
-        StartCoroutine(TurnLightOffForTimer(lightHeld, toggleDuration));
+        StartCoroutine(TurnLightOffForTimer(toggleDuration));
 
     }
 
