@@ -92,14 +92,16 @@ public class Outline : MonoBehaviour
 		outlineMaskMaterial.name = "OutlineMask (Instance)";
 		outlineFillMaterial.name = "OutlineFill (Instance)";
 
-		// Retrieve or generate smooth normals
-		LoadSmoothNormals();
+        UpdateMaterialProperties();
+
+        // Retrieve or generate smooth normals
+        LoadSmoothNormals();
 
 		// Apply material properties immediately
 		needsUpdate = true;
 	}
 
-	private void Update()
+    private void Update()
 	{
 		if (needsUpdate)
 		{

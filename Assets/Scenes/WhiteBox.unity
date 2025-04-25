@@ -8791,6 +8791,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 1655596698}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &708175782
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13394,6 +13406,10 @@ PrefabInstance:
       value: event:/SFX/Dissolve(Crackle)
       objectReference: {fileID: 0}
     - target: {fileID: 8984879878268068712, guid: bbe862405b9460c469ed559638f0bbb4, type: 3}
+      propertyPath: <StartQueue>k__BackingField.Path
+      value: event:/Music/StartQueue
+      objectReference: {fileID: 0}
+    - target: {fileID: 8984879878268068712, guid: bbe862405b9460c469ed559638f0bbb4, type: 3}
       propertyPath: <EndingTheme>k__BackingField.Path
       value: event:/Music/Ending Music
       objectReference: {fileID: 0}
@@ -13424,6 +13440,22 @@ PrefabInstance:
     - target: {fileID: 8984879878268068712, guid: bbe862405b9460c469ed559638f0bbb4, type: 3}
       propertyPath: <ChildThemeQueue>k__BackingField.Path
       value: event:/Music/Child_Theme
+      objectReference: {fileID: 0}
+    - target: {fileID: 8984879878268068712, guid: bbe862405b9460c469ed559638f0bbb4, type: 3}
+      propertyPath: <StartQueue>k__BackingField.Guid.Data1
+      value: 1619056923
+      objectReference: {fileID: 0}
+    - target: {fileID: 8984879878268068712, guid: bbe862405b9460c469ed559638f0bbb4, type: 3}
+      propertyPath: <StartQueue>k__BackingField.Guid.Data2
+      value: 1187509669
+      objectReference: {fileID: 0}
+    - target: {fileID: 8984879878268068712, guid: bbe862405b9460c469ed559638f0bbb4, type: 3}
+      propertyPath: <StartQueue>k__BackingField.Guid.Data3
+      value: 1845870755
+      objectReference: {fileID: 0}
+    - target: {fileID: 8984879878268068712, guid: bbe862405b9460c469ed559638f0bbb4, type: 3}
+      propertyPath: <StartQueue>k__BackingField.Guid.Data4
+      value: 2134110082
       objectReference: {fileID: 0}
     - target: {fileID: 8984879878268068712, guid: bbe862405b9460c469ed559638f0bbb4, type: 3}
       propertyPath: <EndingTheme>k__BackingField.Guid.Data1
@@ -21755,6 +21787,11 @@ Transform:
   - {fileID: 991306925}
   m_Father: {fileID: 211253601}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1655596698 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4550491143116599560, guid: bbe862405b9460c469ed559638f0bbb4, type: 3}
+  m_PrefabInstance: {fileID: 1053277073}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1655757242
 GameObject:
   m_ObjectHideFlags: 0
