@@ -144,7 +144,7 @@ public class LightScript : MonoBehaviour
 
         if (this.enabled)
         {
-            //material.SetColor("_EmissionColor", DefaultEmission * -10);
+            
             foreach (Material material in materials)
             {
                 material.DisableKeyword("_EMISSION");
@@ -159,7 +159,7 @@ public class LightScript : MonoBehaviour
         {
             material.EnableKeyword("_EMISSION");
         }
-        //material.SetColor("_EmissionColor", DefaultEmission);
+        
     }
 
     public void StartToggleLightCoroutine(float toggleDuration)
