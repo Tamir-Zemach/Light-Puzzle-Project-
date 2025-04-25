@@ -19,12 +19,15 @@ public class SeperatingWall : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-
-        if (((1 << other.gameObject.layer) & pickupLayer) == 1 << other.gameObject.layer)
+        if (!other.isTrigger)
         {
-            pickupController.DropPickupInFrontOfWall(_dropPoint);
-            _checkForPickables._isHoldingObj = false;
+            if (((1 << other.gameObject.layer) & pickupLayer) == 1 << other.gameObject.layer)
+            {
+                pickupController.DropPickupInFrontOfWall(_dropPoint);
+                _checkForPickables._isHoldingObj = false;
+            }
         }
+
     }
 
     private void OnDrawGizmos()
