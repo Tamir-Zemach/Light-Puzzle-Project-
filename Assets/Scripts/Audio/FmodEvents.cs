@@ -16,7 +16,9 @@ public class FmodEvents : MonoBehaviour
 
     [field: Header("Audio Queues")]
     [field: SerializeField] public EventReference ChildThemeQueue { get; private set; }
+    [field: SerializeField] public EventReference StartQueue { get; private set; }
 
+    [field: Header("OST")]
     [field: SerializeField] public EventReference EndingTheme { get; private set; }
 
 
