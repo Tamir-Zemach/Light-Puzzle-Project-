@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 3398836533457085431}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -1.2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -146,7 +146,7 @@ Transform:
   m_GameObject: {fileID: 4141398197258686849}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -1.2, z: 0}
   m_LocalScale: {x: 1.8, y: 1.8, z: 1.8}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -180,7 +180,7 @@ Transform:
   m_GameObject: {fileID: 4720851771275101380}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.516}
+  m_LocalPosition: {x: 0, y: -1.2, z: 0.516}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -301,7 +301,7 @@ Transform:
   m_GameObject: {fileID: 4854450020137284160}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -1.2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5137,7 +5137,7 @@ Transform:
   m_GameObject: {fileID: 6266807345727066932}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.12, y: 0.568, z: 9.84}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5180,6 +5180,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RayCastRange: 15
   sphereCastRadius: 2
+  rayYOffset: -0.6
   IgnoredLayer:
     serializedVersion: 2
     m_Bits: 68
@@ -5204,7 +5205,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 0.6, y: 1.09, z: 0.6}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: -1.2, z: 0}
 --- !u!54 &3464784918607149713
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5252,7 +5253,7 @@ SphereCollider:
   m_Enabled: 1
   serializedVersion: 3
   m_Radius: 2
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: -1.2, z: 0}
 --- !u!1001 &6304578942507644966
 PrefabInstance:
   m_ObjectHideFlags: 0
