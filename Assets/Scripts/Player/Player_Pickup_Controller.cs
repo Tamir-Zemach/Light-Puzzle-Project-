@@ -13,6 +13,7 @@ public class Player_Pickup_Controller : MonoBehaviour
     private float _defaultCameraTopClamp;
     private float _defaultCameraBottomClamp;
     [SerializeField] private GameObject _playerCameraRoot;
+    [SerializeField] private Transform _handBone;
 
     private CheckForPickables _checkForPickables;
     private ThirdPersonController _playerContoller;
@@ -40,8 +41,9 @@ public class Player_Pickup_Controller : MonoBehaviour
         _objectThatGotPickedUp = _checkForPickables._hitInfo.transform.gameObject;
         _objectRigidbody = _objectThatGotPickedUp.GetComponent<Rigidbody>();
         Transform objectTransform = _objectThatGotPickedUp.transform;
-        objectTransform.parent = transform;
-        objectTransform.SetPositionAndRotation(transform.position, transform.rotation);
+        objectTransform.SetPositionAndRotation(_handBone.position, objectTransform.rotation);
+        objectTransform.parent = _handBone;
+
 
         _objectRigidbody.constraints = RigidbodyConstraints.FreezeAll;
     }
