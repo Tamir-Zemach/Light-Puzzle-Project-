@@ -2,7 +2,7 @@
 - Project name: light puzzle project
 - Unity version: Unity 6000.0.35f1
 - Active game object:
-  - Name: PlayerPickupController
-  - Tag: Test
-  - Layer:  
+  - Name: Fisherman Ver 02 from mixamo@Jumping
+  - Tag: Untagged
+  - Layer: Default
 <!-- UNITY CODE ASSIST INSTRUCTIONS END -->

@@ -13,9 +13,12 @@ public class Player_Pickup_Controller : MonoBehaviour
     private float _defaultCameraTopClamp;
     private float _defaultCameraBottomClamp;
     [SerializeField] private GameObject _playerCameraRoot;
+    [SerializeField] private Transform _handBone;
 
     private CheckForPickables _checkForPickables;
     private ThirdPersonController _playerContoller;
+
+    private bool lockRotation;
 
     private void Awake()
     {
@@ -27,7 +30,13 @@ public class Player_Pickup_Controller : MonoBehaviour
 
     }
 
-
+    private void LateUpdate()
+    {
+        if (lockRotation)
+        {
+            _objectThatGotPickedUp.transform.rotation = transform.rotation;
+        }
+    }
     public void Pickup()
     {
         AttachPickedUpObject();
@@ -37,13 +46,15 @@ public class Player_Pickup_Controller : MonoBehaviour
     }
     private void AttachPickedUpObject()
     {
+        lockRotation = true;
         _objectThatGotPickedUp = _checkForPickables._hitInfo.transform.gameObject;
         _objectRigidbody = _objectThatGotPickedUp.GetComponent<Rigidbody>();
-        Transform objectTransform = _objectThatGotPickedUp.transform;
-        objectTransform.parent = transform;
-        objectTransform.SetPositionAndRotation(transform.position, transform.rotation);
-
         _objectRigidbody.constraints = RigidbodyConstraints.FreezeAll;
+        Transform objectTransform = _objectThatGotPickedUp.transform;
+        objectTransform.position = _handBone.position;
+        objectTransform.SetParent(_handBone);
+
+         
     }
 
     private void SetPickupCameraMode()
@@ -66,6 +77,7 @@ public class Player_Pickup_Controller : MonoBehaviour
 
     private void DetachPickedUpObject(Rigidbody objectRigidbody)
     {
+        lockRotation = false;
         objectRigidbody.constraints = RigidbodyConstraints.FreezeRotation;
         _objectThatGotPickedUp.transform.SetParent(null);
         objectRigidbody.linearVelocity = Vector3.zero;
