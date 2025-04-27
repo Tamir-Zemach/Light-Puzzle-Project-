@@ -17660,6 +17660,50 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8160404170591585171, guid: 17e69e7e5fb911644b1ad76a2207a6f5, type: 3}
   m_PrefabInstance: {fileID: 616011003}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &617753157
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 617753158}
+  - component: {fileID: 617753159}
+  m_Layer: 0
+  m_Name: AudioOnStart_ScriptHolder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &617753158
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 617753157}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1053277074}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &617753159
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 617753157}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2860a6fd5b3451848a60a7768efe6af0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &618147899 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1941817159119615994, guid: a13ed5624ccf1f34293befcedad4934d, type: 3}
@@ -27412,13 +27456,13 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 1655596698}
-        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
-        m_MethodName: 
+      - m_Target: {fileID: 617753159}
+        m_TargetAssemblyTypeName: PlayAudioOnStart, Assembly-CSharp
+        m_MethodName: _PlayAudioOnStart
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -51144,7 +51188,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 3409087855783128642, guid: bbe862405b9460c469ed559638f0bbb4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 617753158}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bbe862405b9460c469ed559638f0bbb4, type: 3}
 --- !u!4 &1053277074 stripped
@@ -60823,11 +60870,6 @@ Transform:
   - {fileID: 991306925}
   m_Father: {fileID: 211253601}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1655596698 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4550491143116599560, guid: bbe862405b9460c469ed559638f0bbb4, type: 3}
-  m_PrefabInstance: {fileID: 1053277073}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1655757242
 GameObject:
   m_ObjectHideFlags: 0
