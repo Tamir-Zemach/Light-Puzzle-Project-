@@ -1,19 +1,30 @@
+using System.Collections;
 using TMPro;
 using UnityEngine;
 
 public class CheckForPickables : MonoBehaviour
 {
+    [Header("Ray Params")]
     public GameObject _rayStartPos;
     public float _rayLength = 0.9f;
     public RaycastHit _hitInfo;
-    public LayerMask _pickableItemLayer;
     public LayerMask ignoreRaycastLayer;
-    public bool _isHoldingObj;
-    private OutlineHandler _outlineHandler;
+
+    [Header("Input Text")]
     [SerializeField] private TextMeshPro _textToAppear;
+
+
+    private OutlineHandler _outlineHandler;
     private Player_Pickup_Controller _pickupController;
     private Camera _camera;
+
     private Vector3 _screenCenter = new Vector3(Screen.width / 2, Screen.height / 2, 0);
+    [HideInInspector] public bool _isHoldingObj;
+    
+
+    [Header("Input Buffer")]
+    [SerializeField] private float bufferTime = 0.5f;
+    private bool canPressDrop = true;
 
 
 
@@ -70,22 +81,31 @@ public class CheckForPickables : MonoBehaviour
     }
     public void HandlePickup()
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.E) && !_isHoldingObj && canPressDrop)
         {
             _pickupController.Pickup();
             _outlineHandler.ResetHighlight();
             _isHoldingObj = true;
+            StartCoroutine(InputBuffer());
         }
 
     }
     private void HandleDropPickup()
     {
-        if (_isHoldingObj && Input.GetKeyDown(KeyCode.F))
+        if (_isHoldingObj && Input.GetKeyDown(KeyCode.E) && canPressDrop)
         {
             _pickupController.DropPickup();
             _outlineHandler.ResetHighlight();
             _isHoldingObj = false;
+            StartCoroutine(InputBuffer());
         }
+    }
+
+    private IEnumerator InputBuffer()
+    {
+        canPressDrop = false;
+        yield return  new WaitForSeconds(bufferTime);
+        canPressDrop = true;
     }
 
 }

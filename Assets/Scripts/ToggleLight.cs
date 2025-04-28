@@ -1,28 +1,23 @@
-using System.Collections;
 using UnityEngine;
+using System.Collections;
 
 public class ToggleLight : MonoBehaviour
 {
     //if lantern enters it
     //turn it off for a timed duration
 
-    //TODO: should require an input from player while he is holding a lantern
-    [SerializeField] float toggleDuration = 2f;
-    private LightScript lightToToggle;
+    [SerializeField] float toggleDuration = 3.5f;
+    [SerializeField] float flashDuration = 0.3f;
+    [SerializeField] int flashCount = 2;
 
 
 
-
-
-    private void OnTriggerEnter(Collider other) 
+    private void OnTriggerEnter(Collider other)
     {
         var lightToToggle = other.GetComponent<LightScript>();
-        lightToToggle?.StartToggleLightCoroutine(toggleDuration);
+        lightToToggle?.StartToggleLightCoroutine(toggleDuration, flashCount, flashDuration);
 
     }
-
-
-
 
 
 }
