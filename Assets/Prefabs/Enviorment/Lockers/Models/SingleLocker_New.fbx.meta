@@ -1,9 +1,14 @@
 fileFormatVersion: 2
-guid: 1012fafe84643814eaea964e83518fb5
+guid: ff75b1a5c780ba5479983363eadaef57
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: locker__001__mat
+    second: {fileID: 2100000, guid: 88d2c8aaa56e941498b18e0bb2d00aa5, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
