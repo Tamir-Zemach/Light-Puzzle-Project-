@@ -2,7 +2,7 @@
 - Project name: light puzzle project
 - Unity version: Unity 6000.0.35f1
 - Active game object:
-  - Name: Red_Lantren Variant (1)
+  - Name: Locker_Big
   - Tag: Untagged
-  - Layer: Pickupable Item
+  - Layer: Default
 <!-- UNITY CODE ASSIST INSTRUCTIONS END -->
