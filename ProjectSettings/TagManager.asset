@@ -15,7 +15,7 @@ TagManager:
   - UI
   - Pickupable Item
   - CanGetHitByLIghtLayer
-  - ' '
+  - Invisible  Collider
   - 
   - 
   - 
