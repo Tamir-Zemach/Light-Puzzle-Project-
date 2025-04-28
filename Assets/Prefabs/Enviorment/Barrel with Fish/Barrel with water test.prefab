@@ -68,14 +68,34 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: c751f4da75e87cb478ebbd6565ee345c, type: 2}
+    - target: {fileID: 324566533546255370, guid: 20b3ce3fce2dba24b8df6abfb3fb4c64, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 65
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 20b3ce3fce2dba24b8df6abfb3fb4c64, type: 3}
       propertyPath: m_Name
       value: Barrel with water test
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 20b3ce3fce2dba24b8df6abfb3fb4c64, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 65
       objectReference: {fileID: 0}
     - target: {fileID: 2024838467396389547, guid: 20b3ce3fce2dba24b8df6abfb3fb4c64, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: c751f4da75e87cb478ebbd6565ee345c, type: 2}
+    - target: {fileID: 2291933399339555499, guid: 20b3ce3fce2dba24b8df6abfb3fb4c64, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 65
+      objectReference: {fileID: 0}
+    - target: {fileID: 6572683484597976625, guid: 20b3ce3fce2dba24b8df6abfb3fb4c64, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 65
+      objectReference: {fileID: 0}
+    - target: {fileID: 8776366185015890098, guid: 20b3ce3fce2dba24b8df6abfb3fb4c64, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 65
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:

@@ -15,7 +15,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 65
   m_IsActive: 1
 --- !u!4 &2113953161194145958
 Transform:
@@ -101,14 +101,38 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -8136904761613606164, guid: f526e751b14fe014db57681dfe6009fa, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 65
+      objectReference: {fileID: 0}
+    - target: {fileID: -7774913923040425619, guid: f526e751b14fe014db57681dfe6009fa, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 65
+      objectReference: {fileID: 0}
+    - target: {fileID: -7476071685762237141, guid: f526e751b14fe014db57681dfe6009fa, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 65
+      objectReference: {fileID: 0}
     - target: {fileID: -7450801114740307405, guid: f526e751b14fe014db57681dfe6009fa, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 6506da2a011aaa54386d63db916690b3, type: 2}
+    - target: {fileID: -6405986264795036165, guid: f526e751b14fe014db57681dfe6009fa, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 65
+      objectReference: {fileID: 0}
+    - target: {fileID: -4865572523932652202, guid: f526e751b14fe014db57681dfe6009fa, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 65
+      objectReference: {fileID: 0}
     - target: {fileID: -4359494168637782924, guid: f526e751b14fe014db57681dfe6009fa, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 6506da2a011aaa54386d63db916690b3, type: 2}
+    - target: {fileID: -3296146388320491736, guid: f526e751b14fe014db57681dfe6009fa, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 65
+      objectReference: {fileID: 0}
     - target: {fileID: -2878748978769689090, guid: f526e751b14fe014db57681dfe6009fa, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
@@ -117,6 +141,10 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 6506da2a011aaa54386d63db916690b3, type: 2}
+    - target: {fileID: -619425108840828350, guid: f526e751b14fe014db57681dfe6009fa, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 65
+      objectReference: {fileID: 0}
     - target: {fileID: 16252048079750063, guid: f526e751b14fe014db57681dfe6009fa, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
@@ -124,6 +152,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: f526e751b14fe014db57681dfe6009fa, type: 3}
       propertyPath: m_Name
       value: Cofee Table
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f526e751b14fe014db57681dfe6009fa, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 65
+      objectReference: {fileID: 0}
+    - target: {fileID: 935529044466478709, guid: f526e751b14fe014db57681dfe6009fa, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 65
       objectReference: {fileID: 0}
     - target: {fileID: 2022075366853678568, guid: f526e751b14fe014db57681dfe6009fa, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
@@ -133,6 +169,14 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 6506da2a011aaa54386d63db916690b3, type: 2}
+    - target: {fileID: 4753640310798304863, guid: f526e751b14fe014db57681dfe6009fa, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 65
+      objectReference: {fileID: 0}
+    - target: {fileID: 6410629898726401190, guid: f526e751b14fe014db57681dfe6009fa, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 65
+      objectReference: {fileID: 0}
     - target: {fileID: 6567896050235450458, guid: f526e751b14fe014db57681dfe6009fa, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 

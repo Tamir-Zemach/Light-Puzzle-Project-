@@ -52,17 +52,41 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -5979651360401214837, guid: 07453492ea13cf94aadd260bf9947fda, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 65
+      objectReference: {fileID: 0}
     - target: {fileID: -4551103492266563724, guid: 07453492ea13cf94aadd260bf9947fda, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 74d6db3d0681dfb44abbbfff34801184, type: 2}
+    - target: {fileID: -3618630211216369314, guid: 07453492ea13cf94aadd260bf9947fda, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 65
+      objectReference: {fileID: 0}
     - target: {fileID: -1468320803735325023, guid: 07453492ea13cf94aadd260bf9947fda, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 74d6db3d0681dfb44abbbfff34801184, type: 2}
+    - target: {fileID: -1202211071233542706, guid: 07453492ea13cf94aadd260bf9947fda, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 65
+      objectReference: {fileID: 0}
+    - target: {fileID: 509341675857912026, guid: 07453492ea13cf94aadd260bf9947fda, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 65
+      objectReference: {fileID: 0}
+    - target: {fileID: 689760525247238710, guid: 07453492ea13cf94aadd260bf9947fda, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 65
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 07453492ea13cf94aadd260bf9947fda, type: 3}
       propertyPath: m_Name
       value: wodden_pallet
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 07453492ea13cf94aadd260bf9947fda, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 65
       objectReference: {fileID: 0}
     - target: {fileID: 4807991087940455266, guid: 07453492ea13cf94aadd260bf9947fda, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
@@ -72,6 +96,10 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 74d6db3d0681dfb44abbbfff34801184, type: 2}
+    - target: {fileID: 6553813944963933434, guid: 07453492ea13cf94aadd260bf9947fda, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 65
+      objectReference: {fileID: 0}
     - target: {fileID: 8576643578207866674, guid: 07453492ea13cf94aadd260bf9947fda, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 

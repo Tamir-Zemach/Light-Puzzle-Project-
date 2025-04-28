@@ -120,6 +120,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8879809015543218755}
     m_Modifications:
+    - target: {fileID: 2037654253420714732, guid: e95a55c1ea537af49a3d8c7acd3e2aec, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 65
+      objectReference: {fileID: 0}
     - target: {fileID: 2174517564517526474, guid: e95a55c1ea537af49a3d8c7acd3e2aec, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.5
@@ -176,6 +180,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Green_circle
       objectReference: {fileID: 0}
+    - target: {fileID: 3575059869586960400, guid: e95a55c1ea537af49a3d8c7acd3e2aec, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 65
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -194,6 +202,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8599963603747202183}
     m_Modifications:
+    - target: {fileID: -8740740162015822184, guid: 7cd72c479891e924ca4ad9f3d0bafd44, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 65
+      objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7cd72c479891e924ca4ad9f3d0bafd44, type: 3}
       propertyPath: m_LocalScale.x
       value: 7.028647
@@ -253,6 +265,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 7cd72c479891e924ca4ad9f3d0bafd44, type: 3}
       propertyPath: m_Name
       value: Sign
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 7cd72c479891e924ca4ad9f3d0bafd44, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 65
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
