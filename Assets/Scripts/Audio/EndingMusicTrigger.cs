@@ -14,8 +14,9 @@ public class EndingMusicTrigger : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        emitter.Play();
-
-
+        if (!emitter.IsPlaying())
+        {
+            emitter.Play();
+        }
     }
 }

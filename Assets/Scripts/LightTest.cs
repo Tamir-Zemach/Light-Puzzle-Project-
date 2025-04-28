@@ -7,6 +7,7 @@ public class LightScript : MonoBehaviour
 
     [SerializeField] float RayCastRange = 15f;
     [SerializeField] float sphereCastRadius = 2f;
+    [SerializeField] float rayYOffset = -1.2f;
     [SerializeField] LayerMask IgnoredLayer;
     [SerializeField] LanternColor lanternColor;
 
@@ -103,7 +104,7 @@ public class LightScript : MonoBehaviour
     {
         if (this.enabled)
         {
-            Debug.DrawRay(transform.position, transform.forward * RayCastRange, VisualColor);
+            Debug.DrawRay(transform.position + new Vector3(0, rayYOffset, 0), transform.forward * RayCastRange, VisualColor);
             Gizmos.color = VisualColor;
             Gizmos.DrawWireSphere(transform.position, sphereCastRadius);
         }
@@ -124,7 +125,7 @@ public class LightScript : MonoBehaviour
             currentHitLightReactionScript = null;
         }
 
-        bool isRaycastHitting = Physics.Raycast(transform.position, transform.forward, out RaycastHit hitInfo, RayCastRange, ~IgnoredLayer);
+        bool isRaycastHitting = Physics.Raycast(transform.position + new Vector3(0, rayYOffset, 0), transform.forward, out RaycastHit hitInfo, RayCastRange, ~IgnoredLayer);
 
 
         if (isRaycastHitting)
