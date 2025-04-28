@@ -2,7 +2,7 @@
 - Project name: light puzzle project
 - Unity version: Unity 6000.0.35f1
 - Active game object:
-  - Name: TallBox_Open_Prefab (2)
+  - Name: Red_Lantren Variant (1)
   - Tag: Untagged
-  - Layer: Default
+  - Layer: Pickupable Item
 <!-- UNITY CODE ASSIST INSTRUCTIONS END -->

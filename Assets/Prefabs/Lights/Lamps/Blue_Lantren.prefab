@@ -5121,7 +5121,6 @@ GameObject:
   - component: {fileID: 3717241431376081925}
   - component: {fileID: 3464784918607149713}
   - component: {fileID: 6005081526874411948}
-  - component: {fileID: 893360404728912919}
   m_Layer: 6
   m_Name: Blue_Lantren
   m_TagString: Untagged
@@ -5184,7 +5183,7 @@ MonoBehaviour:
   rayYOffset: -0.6
   IgnoredLayer:
     serializedVersion: 2
-    m_Bits: 68
+    m_Bits: 324
   lanternColor: 2
 --- !u!65 &3717241431376081925
 BoxCollider:
@@ -5255,18 +5254,6 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 2
   m_Center: {x: 0, y: -1.2, z: 0}
---- !u!114 &893360404728912919
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6266807345727066932}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9dbf091d06e8bdc4481f6f72b99ec6a1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &6304578942507644966
 PrefabInstance:
   m_ObjectHideFlags: 0
