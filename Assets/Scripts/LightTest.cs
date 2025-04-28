@@ -91,7 +91,7 @@ public class LightScript : MonoBehaviour
             var lightReactionScript = other.GetComponent<LightReactionTest>();
             lightReactionScript?.RemoveColorFromList(lanternColor);
         }
-       
+
     }
 
 
@@ -138,38 +138,41 @@ public class LightScript : MonoBehaviour
         }
     }
 
-    private IEnumerator TurnLightOffForTimer( float toggleDuration) //probably best change this to not disable script.
+    private IEnumerator TurnLightOffForTimer(float toggleDuration, int flashCount, float flashDuration)
     {
-
-        
-
-        if (this.enabled)
-        {
-            
-            foreach (Material material in materials)
-            {
-                material.DisableKeyword("_EMISSION");
-            }
-            this.enabled = false;
-            
-        }
+        this.enabled = false;
+        ToggleEmission(false);
         yield return new WaitForSeconds(toggleDuration);
 
+        // Flashing effect
+        for (int i = 0; i < flashCount; i++)
+        {
+            ToggleEmission(true);
+            yield return new WaitForSeconds(flashDuration);
+            ToggleEmission(false);
+            yield return new WaitForSeconds(flashDuration);
+        }
+
+        ToggleEmission(true); // Turn emission back on
         this.enabled = true;
+    }
+
+    private void ToggleEmission(bool state)
+    {
+
         foreach (Material material in materials)
         {
-            material.EnableKeyword("_EMISSION");
+            if (state)
+                material.EnableKeyword("_EMISSION");
+            else
+                material.DisableKeyword("_EMISSION");
         }
-        
     }
-
-    public void StartToggleLightCoroutine(float toggleDuration)
+    public void StartToggleLightCoroutine(float toggleDuration, int flashCount, float flashDuration)
     {
         StopAllCoroutines();
-        StartCoroutine(TurnLightOffForTimer(toggleDuration));
-
+        StartCoroutine(TurnLightOffForTimer(toggleDuration, flashCount, flashDuration));
     }
-
 
     private void OnEnable()
     {
