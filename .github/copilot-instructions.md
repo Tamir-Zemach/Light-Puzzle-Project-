@@ -2,7 +2,7 @@
 - Project name: light puzzle project
 - Unity version: Unity 6000.0.35f1
 - Active game object:
-  - Name: Blue_Lantren (2)
+  - Name: Bench (10)
   - Tag: Untagged
-  - Layer: Pickupable Item
+  - Layer: Default
 <!-- UNITY CODE ASSIST INSTRUCTIONS END -->
