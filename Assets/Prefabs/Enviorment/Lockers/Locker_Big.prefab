@@ -14,7 +14,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 65
   m_IsActive: 1
 --- !u!4 &7977646943177417482
 Transform:
@@ -47,7 +47,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 65
   m_IsActive: 1
 --- !u!4 &4073149674143672481
 Transform:
@@ -135,12 +135,20 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: ddfb8f3107adbf64e83ca896442e1e13, type: 3}
+      propertyPath: m_ScaleInLightmap
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: ddfb8f3107adbf64e83ca896442e1e13, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: f0d85792583221a4d89c10ea5622859a, type: 2}
     - target: {fileID: 919132149155446097, guid: ddfb8f3107adbf64e83ca896442e1e13, type: 3}
       propertyPath: m_Name
       value: Locker_Big_Mesh
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ddfb8f3107adbf64e83ca896442e1e13, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 65
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
