@@ -40,11 +40,11 @@ Material:
     m_Floats:
     - _DepthOffset: 1.39
     - _DistortionStrength: 1.17
-    - _FrenselPower: 0.48
+    - _FrenselPower: 0.76
     - _QueueControl: 0
     - _QueueOffset: 0
     m_Colors:
-    - _FresnelColor: {r: 1.4409055, g: 0, b: 2.0386147, a: 0}
+    - _FresnelColor: {r: 0.23592816, g: 0, b: 0.3337947, a: 0}
     - _MaskSmoothStep: {r: 0.05, g: 7.18, b: 0, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
