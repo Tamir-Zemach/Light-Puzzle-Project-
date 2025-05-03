@@ -25,7 +25,7 @@ public class MeshCombinerEditor : MonoBehaviour
             CombineInstance ci = new CombineInstance
             {
                 mesh = mf.sharedMesh,
-                transform = mf.transform.localToWorldMatrix
+                transform = parent.worldToLocalMatrix * mf.transform.localToWorldMatrix
             };
             combine.Add(ci);
         }
