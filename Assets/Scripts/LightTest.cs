@@ -22,6 +22,11 @@ public class LightScript : MonoBehaviour
 
     private Color VisualColor; //must be a better way to do this
 
+    private void OnValidate()
+    {
+        OverlapSphere = GetComponent<SphereCollider>();
+    }
+
     private void Awake()
     {
 
@@ -106,7 +111,7 @@ public class LightScript : MonoBehaviour
         {
             Debug.DrawRay(transform.position + new Vector3(0, rayYOffset, 0), transform.forward * RayCastRange, VisualColor);
             Gizmos.color = VisualColor;
-            Gizmos.DrawWireSphere(transform.position, sphereCastRadius);
+            Gizmos.DrawWireSphere(transform.TransformPoint(OverlapSphere.center), sphereCastRadius/2); // make sure lantern scale is 1,1,1 so that dividing by 2 isnt necessery
         }
 
     }
