@@ -16,7 +16,7 @@ Material:
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
+  m_CustomRenderQueue: 2900
   stringTagMap: {}
   disabledShaderPasses:
   - MOTIONVECTORS
@@ -38,10 +38,10 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _DepthOffset: 1.39
+    - _DepthOffset: 30.25
     - _DistortionStrength: 1.17
     - _FrenselPower: 0.76
-    - _QueueControl: 0
+    - _QueueControl: 1
     - _QueueOffset: 0
     m_Colors:
     - _FresnelColor: {r: 0.23592816, g: 0, b: 0.3337947, a: 0}
