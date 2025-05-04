@@ -11,6 +11,10 @@ public class FmodEvents : MonoBehaviour
     [field: SerializeField] public EventReference playerFootstep { get; private set; }
     [field: SerializeField] public EventReference playerLand { get; private set; }
 
+    [field: SerializeField] public EventReference playerPickup { get; private set; }
+
+    [field: SerializeField] public EventReference playerDrop { get; private set; }
+
     [field: Header("Ambience")]
     [field: SerializeField] public EventReference windAndWaves { get; private set; }
 
