@@ -2,7 +2,7 @@
 - Project name: light puzzle project
 - Unity version: Unity 6000.0.35f1
 - Active game object:
-  - Name: Exit
-  - Tag: Untagged
-  - Layer: Default
+  - Name: PlayerArmature
+  - Tag: Player
+  - Layer: Ignore Raycast
 <!-- UNITY CODE ASSIST INSTRUCTIONS END -->

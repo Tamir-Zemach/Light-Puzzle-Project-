@@ -1,34 +1,66 @@
 
+using Unity.VisualScripting;
 using UnityEngine;
 
 [RequireComponent(typeof(UIElementGetter))] 
 public class UIFunctions : MonoBehaviour
 {
-    private UIElementGetter uiElementGetter;
-
+    private UIElementGetter _uiElementGetter;
+    private PauseButton pauseButton;
     private void Awake()
     {
-        uiElementGetter = GetComponent<UIElementGetter>();
+        _uiElementGetter = GetComponent<UIElementGetter>();
+        pauseButton = GetComponent<PauseButton>();
     }
 
     public void StartGame()
     {
         
-        if (uiElementGetter.HasMissingReferences())
+        if (_uiElementGetter.HasMissingReferences())
         {
             Debug.LogError("Cannot start the game because one or more required components are missing!");
             return;
         }
 
         // Game Start Logic
-        uiElementGetter._startCanvas.SetActive(false);
-        uiElementGetter._uiCamera.enabled = false;
-        uiElementGetter._playerInput.enabled = true;
-        uiElementGetter.playAudioOnStart._PlayAudioOnStart();
+        SetGameObjectAndChildrenActive(_uiElementGetter._pauseCanvas, false);
+        _uiElementGetter._startCanvas.SetActive(false);
+        _uiElementGetter._StartuiCamera.enabled = false;
+        _uiElementGetter._playerInput.enabled = true;
+        _uiElementGetter.playAudioOnStart._PlayAudioOnStart();
     }
 
     public void CloseGame()
     {
         Application.Quit();
+    }
+
+    public void PauseGame()
+    {
+        pauseButton._pressedPauseButton = true;
+        _uiElementGetter._pickupCamera.enabled = true;
+        _uiElementGetter._startEventSystem.enabled = false;
+        _uiElementGetter._pauseEventSystem.enabled = true;
+        SetGameObjectAndChildrenActive(_uiElementGetter._pauseCanvas, true);
+        _uiElementGetter._playerInput.enabled = false;
+    }
+
+    public void Continue()
+    {
+        _uiElementGetter._playerInput.enabled = true;
+        SetGameObjectAndChildrenActive(_uiElementGetter._pauseCanvas, false);
+        _uiElementGetter._pickupCamera.enabled = false;
+        pauseButton._pressedPauseButton = false;
+
+    }
+
+
+    void SetGameObjectAndChildrenActive(GameObject parent, bool state)
+    {
+        parent.SetActive(state);
+        foreach (Transform child in parent.transform)
+        {
+            SetGameObjectAndChildrenActive(child.gameObject, state);
+        }
     }
 }

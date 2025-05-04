@@ -1,21 +1,31 @@
 using Unity.Cinemachine;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
 public class UIElementGetter : MonoBehaviour
 {
     public GameObject _startCanvas;
-    public CinemachineCamera _uiCamera;
+    public GameObject _pauseCanvas;
+    public CinemachineCamera _StartuiCamera;
+    public CinemachineCamera _pickupCamera;
     public PlayerInput _playerInput;
     public PlayAudioOnStart playAudioOnStart;
+    public EventSystem _startEventSystem;
+    public EventSystem _pauseEventSystem;
 
     private void Awake()
     {
 
         _startCanvas = ValidateObject(GameObject.FindGameObjectWithTag("StartCanvas"), "StartCanvas");
-        _uiCamera = ValidateComponent<CinemachineCamera>(GameObject.Find("Start_UI_Camera"), "UI Camera");
+        _pauseCanvas = ValidateObject(GameObject.FindGameObjectWithTag("PauseCanvas"), "Pause Canvas");
+        _StartuiCamera = ValidateComponent<CinemachineCamera>(GameObject.Find("Start_UI_Camera"), "UI Camera");
+        _pickupCamera = ValidateComponent<CinemachineCamera>(GameObject.Find("pickup_Cam"), "Pause Camera");
         _playerInput = ValidateComponent<PlayerInput>(GameObject.FindGameObjectWithTag("Player"), "PlayerInput");
+        _startEventSystem = ValidateComponent<EventSystem>(GameObject.Find("StartUI_EventSystem"), "Start UI Event System");
+        _pauseEventSystem = ValidateComponent<EventSystem>(GameObject.Find("PauseUI_EventSystem"), "Pause UI Event System");
         playAudioOnStart = ValidateComponent<PlayAudioOnStart>(GameObject.Find("AudioOnStart_ScriptHolder"), "PlayAudioOnStart");
+        
     }
 
     private T ValidateComponent<T>(GameObject obj, string name) where T : Component
@@ -46,6 +56,6 @@ public class UIElementGetter : MonoBehaviour
 
     public bool HasMissingReferences()
     {
-        return _startCanvas == null || _uiCamera == null || _playerInput == null || playAudioOnStart == null;
+        return _startCanvas == null || _StartuiCamera == null || _playerInput == null || playAudioOnStart == null;
     }
 }
