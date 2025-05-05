@@ -6,6 +6,7 @@ public class FmodEvents : MonoBehaviour
 
     [field: Header("SFX")]
     [field: SerializeField] public EventReference Dissolve { get; private set; }
+    [field: SerializeField] public EventReference UIClick { get; private set; }
 
     [field: Header("Player SFX")]
     [field: SerializeField] public EventReference playerFootstepMetal { get; private set; }
