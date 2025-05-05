@@ -8,6 +8,7 @@ TagManager:
   - Test
   - StartCanvas
   - PauseCanvas
+  - AudioSettingsCanvas
   layers:
   - Default
   - TransparentFX

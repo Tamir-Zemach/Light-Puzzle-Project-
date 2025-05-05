@@ -6,8 +6,9 @@ using UnityEngine.InputSystem;
 
 public class UIElementGetter : MonoBehaviour
 {
-    public GameObject _startCanvas;
-    public GameObject _pauseCanvas;
+    public Canvas _startCanvas;
+    public Canvas _pauseCanvas;
+    public Canvas _audioSettingsCanvas;
     public CinemachineCamera _StartuiCamera;
     public CinemachineCamera _pickupCamera;
     public PlayerInput _playerInput;
@@ -20,8 +21,9 @@ public class UIElementGetter : MonoBehaviour
     private void Awake()
     {
 
-        _startCanvas = ValidateObject(GameObject.FindGameObjectWithTag("StartCanvas"), "StartCanvas");
-        _pauseCanvas = ValidateObject(GameObject.FindGameObjectWithTag("PauseCanvas"), "Pause Canvas");
+        _startCanvas = ValidateComponent<Canvas>(GameObject.FindGameObjectWithTag("StartCanvas"), "StartCanvas");
+        _pauseCanvas = ValidateComponent<Canvas>(GameObject.FindGameObjectWithTag("PauseCanvas"), "Pause Canvas");
+        _audioSettingsCanvas = ValidateComponent<Canvas>(GameObject.FindGameObjectWithTag("AudioSettingsCanvas"), "Audio Settings Canvas");
         _StartuiCamera = ValidateComponent<CinemachineCamera>(GameObject.Find("Start_UI_Camera"), "UI Camera");
         _pickupCamera = ValidateComponent<CinemachineCamera>(GameObject.Find("pickup_Cam"), "Pause Camera");
         _playerInput = ValidateComponent<PlayerInput>(GameObject.FindGameObjectWithTag("Player"), "PlayerInput");
