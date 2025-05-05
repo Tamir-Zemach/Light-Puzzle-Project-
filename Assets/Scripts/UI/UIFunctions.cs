@@ -15,7 +15,6 @@ public class UIFunctions : MonoBehaviour
 
     public void StartGame()
     {
-        
         if (_uiElementGetter.HasMissingReferences())
         {
             Debug.LogError("Cannot start the game because one or more required components are missing!");
@@ -23,7 +22,6 @@ public class UIFunctions : MonoBehaviour
         }
 
         // Game Start Logic
-
         _uiElementGetter._pauseCanvas.enabled = false;
         _uiElementGetter._startCanvas.enabled = false;
         _uiElementGetter._StartuiCamera.enabled = false;
@@ -31,10 +29,10 @@ public class UIFunctions : MonoBehaviour
         _uiElementGetter.playAudioOnStart._PlayAudioOnStart();
         pauseButton._pressedPauseButton = false;
         pauseButton._inStartCanvas = false;
-        _uiElementGetter._starterAssetsInputs.cursorInputForLook = true;
+        _uiElementGetter._startEventSystem.enabled = false;
         _uiElementGetter._starterAssetsInputs.SetCursorState(true);
+        _uiElementGetter._starterAssetsInputs.cursorInputForLook = true;
     }
-
     public void CloseGame()
     {
         Application.Quit();
@@ -48,10 +46,9 @@ public class UIFunctions : MonoBehaviour
         _uiElementGetter._pauseEventSystem.enabled = true;
         _uiElementGetter._pauseCanvas.enabled = true;
         _uiElementGetter._thirdPersonController._canMove = false;
-        _uiElementGetter._starterAssetsInputs.cursorInputForLook = false;
         _uiElementGetter._starterAssetsInputs.SetCursorState(false);
+        _uiElementGetter._starterAssetsInputs.cursorInputForLook = false;
     }
-    
 
     public void Continue()
     {
@@ -60,9 +57,8 @@ public class UIFunctions : MonoBehaviour
         _uiElementGetter._audioSettingsCanvas.enabled = false;
         _uiElementGetter._pickupCamera.enabled = false;
         pauseButton._pressedPauseButton = false;
-        _uiElementGetter._starterAssetsInputs.cursorInputForLook = true;
         _uiElementGetter._starterAssetsInputs.SetCursorState(true);
-
+        _uiElementGetter._starterAssetsInputs.cursorInputForLook = true;
     }
 
 
