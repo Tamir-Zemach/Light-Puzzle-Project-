@@ -26046,7 +26046,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8984879878268068712, guid: bbe862405b9460c469ed559638f0bbb4, type: 3}
       propertyPath: <ChildThemeQueue>k__BackingField.Path
-      value: event:/Music/Child_Theme
+      value: event:/Music/AudioQueues/PianoMelodyAPart
       objectReference: {fileID: 0}
     - target: {fileID: 8984879878268068712, guid: bbe862405b9460c469ed559638f0bbb4, type: 3}
       propertyPath: <windAndWaves>k__BackingField.Guid.Data1
