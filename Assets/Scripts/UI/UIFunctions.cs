@@ -26,8 +26,11 @@ public class UIFunctions : MonoBehaviour
         SetGameObjectAndChildrenActive(_uiElementGetter._pauseCanvas, false);
         _uiElementGetter._startCanvas.SetActive(false);
         _uiElementGetter._StartuiCamera.enabled = false;
-        _uiElementGetter._playerInput.enabled = true;
+        _uiElementGetter._thirdPersonController._canMove = true;
         _uiElementGetter.playAudioOnStart._PlayAudioOnStart();
+        pauseButton._pressedPauseButton = false;
+        _uiElementGetter._starterAssetsInputs.cursorInputForLook = true;
+        _uiElementGetter._starterAssetsInputs.SetCursorState(true);
     }
 
     public void CloseGame()
@@ -42,15 +45,20 @@ public class UIFunctions : MonoBehaviour
         _uiElementGetter._startEventSystem.enabled = false;
         _uiElementGetter._pauseEventSystem.enabled = true;
         SetGameObjectAndChildrenActive(_uiElementGetter._pauseCanvas, true);
-        _uiElementGetter._playerInput.enabled = false;
+        _uiElementGetter._thirdPersonController._canMove = false;
+        _uiElementGetter._starterAssetsInputs.cursorInputForLook = false;
+        _uiElementGetter._starterAssetsInputs.SetCursorState(false);
     }
+    
 
     public void Continue()
     {
-        _uiElementGetter._playerInput.enabled = true;
+        _uiElementGetter._thirdPersonController._canMove = true;
         SetGameObjectAndChildrenActive(_uiElementGetter._pauseCanvas, false);
         _uiElementGetter._pickupCamera.enabled = false;
         pauseButton._pressedPauseButton = false;
+        _uiElementGetter._starterAssetsInputs.cursorInputForLook = true;
+        _uiElementGetter._starterAssetsInputs.SetCursorState(true);
 
     }
 

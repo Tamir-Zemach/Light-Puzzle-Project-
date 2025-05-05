@@ -4,10 +4,11 @@ public class PauseButton : MonoBehaviour
 {
     private UIFunctions _uIFunctions;
 
-    public bool _pressedPauseButton = false;
+    public bool _pressedPauseButton;
     private void Awake()
     {
         _uIFunctions = GetComponent<UIFunctions>();
+        _pressedPauseButton = true;
     }
 
     void Update()

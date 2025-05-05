@@ -87,6 +87,8 @@ namespace StarterAssets
         private float _verticalVelocity;
         private float _terminalVelocity = 53.0f;
 
+        public bool _canMove;
+
         // timeout deltatime
         private float _jumpTimeoutDelta;
         private float _fallTimeoutDelta;
@@ -130,6 +132,7 @@ namespace StarterAssets
             {
                 _mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
             }
+            _canMove = false;
         }
 
         private void Start()
@@ -158,7 +161,11 @@ namespace StarterAssets
 
             JumpAndGravity();
             GroundedCheck();
-            Move();
+            if (_canMove) 
+            {
+                Move();
+            }
+
         }
 
         private void LateUpdate()

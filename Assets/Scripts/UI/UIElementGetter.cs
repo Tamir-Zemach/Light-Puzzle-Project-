@@ -1,3 +1,4 @@
+using StarterAssets;
 using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -10,6 +11,8 @@ public class UIElementGetter : MonoBehaviour
     public CinemachineCamera _StartuiCamera;
     public CinemachineCamera _pickupCamera;
     public PlayerInput _playerInput;
+    public ThirdPersonController _thirdPersonController;
+    public StarterAssetsInputs _starterAssetsInputs;
     public PlayAudioOnStart playAudioOnStart;
     public EventSystem _startEventSystem;
     public EventSystem _pauseEventSystem;
@@ -25,6 +28,8 @@ public class UIElementGetter : MonoBehaviour
         _startEventSystem = ValidateComponent<EventSystem>(GameObject.Find("StartUI_EventSystem"), "Start UI Event System");
         _pauseEventSystem = ValidateComponent<EventSystem>(GameObject.Find("PauseUI_EventSystem"), "Pause UI Event System");
         playAudioOnStart = ValidateComponent<PlayAudioOnStart>(GameObject.Find("AudioOnStart_ScriptHolder"), "PlayAudioOnStart");
+        _thirdPersonController = ValidateComponent<ThirdPersonController>(GameObject.FindWithTag("Player"), "Third Person Controller");
+        _starterAssetsInputs = ValidateComponent<StarterAssetsInputs>(_thirdPersonController.gameObject, "Starter Assets Input");
         
     }
 
