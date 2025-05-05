@@ -48,6 +48,8 @@ public class UIFunctions : MonoBehaviour
         _uiElementGetter._thirdPersonController._canMove = false;
         _uiElementGetter._starterAssetsInputs.SetCursorState(false);
         _uiElementGetter._starterAssetsInputs.cursorInputForLook = false;
+        _uiElementGetter._starterAssetsInputs.look = Vector2.zero;
+        _uiElementGetter._animator.SetFloat("Speed", 0);
     }
 
     public void Continue()
@@ -55,7 +57,11 @@ public class UIFunctions : MonoBehaviour
         _uiElementGetter._thirdPersonController._canMove = true;
         _uiElementGetter._pauseCanvas.enabled = false;
         _uiElementGetter._audioSettingsCanvas.enabled = false;
-        _uiElementGetter._pickupCamera.enabled = false;
+        if (!_uiElementGetter._checkForPickables._isHoldingObj)
+        {
+            _uiElementGetter._pickupCamera.enabled = false;
+        }
+        _uiElementGetter._pauseEventSystem.enabled = false;
         pauseButton._pressedPauseButton = false;
         _uiElementGetter._starterAssetsInputs.SetCursorState(true);
         _uiElementGetter._starterAssetsInputs.cursorInputForLook = true;

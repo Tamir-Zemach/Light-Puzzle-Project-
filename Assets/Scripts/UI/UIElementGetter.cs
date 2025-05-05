@@ -13,10 +13,12 @@ public class UIElementGetter : MonoBehaviour
     public CinemachineCamera _pickupCamera;
     public PlayerInput _playerInput;
     public ThirdPersonController _thirdPersonController;
+    public CheckForPickables _checkForPickables;
     public StarterAssetsInputs _starterAssetsInputs;
     public PlayAudioOnStart playAudioOnStart;
     public EventSystem _startEventSystem;
     public EventSystem _pauseEventSystem;
+    public Animator _animator;
 
     private void Awake()
     {
@@ -31,7 +33,9 @@ public class UIElementGetter : MonoBehaviour
         _pauseEventSystem = ValidateComponent<EventSystem>(GameObject.Find("PauseUI_EventSystem"), "Pause UI Event System");
         playAudioOnStart = ValidateComponent<PlayAudioOnStart>(GameObject.Find("AudioOnStart_ScriptHolder"), "PlayAudioOnStart");
         _thirdPersonController = ValidateComponent<ThirdPersonController>(GameObject.FindWithTag("Player"), "Third Person Controller");
+        _checkForPickables = ValidateComponent<CheckForPickables>(GameObject.Find("PlayerPickupController"), "Player Pickup Controller");
         _starterAssetsInputs = ValidateComponent<StarterAssetsInputs>(_thirdPersonController.gameObject, "Starter Assets Input");
+        _animator = ValidateComponent<Animator>(_thirdPersonController.gameObject, "Animator");
         
     }
 

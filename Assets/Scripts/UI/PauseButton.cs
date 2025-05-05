@@ -17,8 +17,6 @@ public class PauseButton : MonoBehaviour
     void Update()
     {
 
-        Debug.Log("Cursor State: " + Cursor.lockState);
-
         if (!_inStartCanvas)
         {
             if (!_pressedPauseButton)

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CustomBlends:
   - From: PlayerFollowCamera
-    To: pickup Cam
+    To: pickup_Cam
     Blend:
       Style: 2
       Time: 0.5
@@ -24,7 +24,7 @@ MonoBehaviour:
         m_PreInfinity: 0
         m_PostInfinity: 0
         m_RotationOrder: 0
-  - From: pickup Cam
+  - From: pickup_Cam
     To: PlayerFollowCamera
     Blend:
       Style: 0
