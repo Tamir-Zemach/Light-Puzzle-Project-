@@ -71,4 +71,9 @@ public class UIFunctions : MonoBehaviour
             SetGameObjectAndChildrenActive(child.gameObject, state);
         }
     }
+
+    public void PlaySound()
+    {
+        AudioManager.instance.playOneShot(FmodEvents.instance.UIClick, transform.position);
+    }
 }
