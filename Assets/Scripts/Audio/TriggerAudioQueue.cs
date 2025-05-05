@@ -8,7 +8,7 @@ public class TriggerAudioQueue : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        AudioManager.instance.playOneShot(FmodEvents.instance.ChildThemeQueue, transform.position);
+        AudioManager.instance.playOneShot(FmodEvents.instance.PianoMelody, transform.position);
         Destroy(this.gameObject);
     }
 }

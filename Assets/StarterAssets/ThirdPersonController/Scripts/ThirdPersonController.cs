@@ -1,4 +1,4 @@
-﻿ using UnityEngine;
+﻿using UnityEngine;
 #if ENABLE_INPUT_SYSTEM 
 using UnityEngine.InputSystem;
 #endif
@@ -29,8 +29,9 @@ namespace StarterAssets
         public float SpeedChangeRate = 10.0f;
 
         //public AudioClip LandingAudioClip;
-       // public AudioClip[] FootstepAudioClips;
+        // public AudioClip[] FootstepAudioClips;
         [Range(0, 1)] public float FootstepAudioVolume = 0.5f; //TODO: currently volume does nothing, need to add paramater through FMOD
+        [HideInInspector] public bool isWalkingOnMetal = true;
 
         [Space(10)]
         [Tooltip("The height the player can jump")]
@@ -87,6 +88,8 @@ namespace StarterAssets
         private float _verticalVelocity;
         private float _terminalVelocity = 53.0f;
 
+        public bool _canMove;
+
         // timeout deltatime
         private float _jumpTimeoutDelta;
         private float _fallTimeoutDelta;
@@ -130,12 +133,13 @@ namespace StarterAssets
             {
                 _mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
             }
+            _canMove = false;
         }
 
         private void Start()
         {
             _cinemachineTargetYaw = CinemachineCameraTarget.transform.rotation.eulerAngles.y;
-            
+
             _hasAnimator = TryGetComponent(out _animator);
             _controller = GetComponent<CharacterController>();
             _input = GetComponent<StarterAssetsInputs>();
@@ -158,7 +162,11 @@ namespace StarterAssets
 
             JumpAndGravity();
             GroundedCheck();
-            Move();
+            if (_canMove)
+            {
+                Move();
+            }
+
         }
 
         private void LateUpdate()
@@ -373,7 +381,14 @@ namespace StarterAssets
         {
             if (animationEvent.animatorClipInfo.weight > 0.5f)
             {
-                AudioManager.instance.playOneShot(FmodEvents.instance.playerFootstep, transform.TransformPoint(_controller.center));
+                if (isWalkingOnMetal)
+                {
+                    AudioManager.instance.playOneShot(FmodEvents.instance.playerFootstepMetal, transform.TransformPoint(_controller.center));
+                }
+                else
+                {
+                    AudioManager.instance.playOneShot(FmodEvents.instance.playerFootstepWood, transform.TransformPoint(_controller.center));
+                }
 
                 /* if (FootstepAudioClips.Length > 0)
                 {

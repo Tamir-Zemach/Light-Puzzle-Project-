@@ -23,7 +23,7 @@ public class LightReactionTest : MonoBehaviour
     private void Awake()
     {
         _dissolveScript = gameObject.GetComponent<Dissolve>();
-        col = GetComponent<Collider>();
+        col = GetComponent<BoxCollider>();
         particles = GetComponentInChildren<ParticleSystem>();
         HandleParticleSystemSize(col);
     }
@@ -177,14 +177,12 @@ public class LightReactionTest : MonoBehaviour
                 break;
 
             case var _ when colorsHittingNow.Contains(LanternColor.Yellow) && colorsHittingNow.Contains(LanternColor.Red) && colorsHittingNow.Count == 2:
-                print("Orange");
                 main.startColor = new Color(1f, 0.6745098f, 0.1098039f, 1f); //orange
                 if (!particles.isEmitting)
                     particles.Play();
                 break;
 
             case var _ when colorsHittingNow.Contains(LanternColor.Blue) && colorsHittingNow.Contains(LanternColor.Red) && colorsHittingNow.Count == 2:
-                print("Puprle");
                 main.startColor = new Color(0.7490196f, 0.2509804f, 0.7490196f, 1f ); // purple
                 if (!particles.isEmitting)
                 particles.Play();

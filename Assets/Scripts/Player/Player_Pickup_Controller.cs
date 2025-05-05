@@ -7,7 +7,7 @@ public class Player_Pickup_Controller : MonoBehaviour
 {
     private GameObject _player;
     private Rigidbody _objectRigidbody;
-    private GameObject _objectThatGotPickedUp; 
+    private GameObject _objectThatGotPickedUp;
 
     [SerializeField] private CinemachineCamera _pickupCam;
     private float _defaultCameraTopClamp;
@@ -39,6 +39,8 @@ public class Player_Pickup_Controller : MonoBehaviour
     }
     public void Pickup()
     {
+        AudioManager.instance.playOneShot(FmodEvents.instance.playerPickup, transform.position);
+
         AttachPickedUpObject();
 
         SetPickupCameraMode();
@@ -54,7 +56,7 @@ public class Player_Pickup_Controller : MonoBehaviour
         objectTransform.position = _handBone.position;
         objectTransform.SetParent(_handBone);
 
-         
+
     }
 
     private void SetPickupCameraMode()
@@ -65,14 +67,15 @@ public class Player_Pickup_Controller : MonoBehaviour
         _playerContoller.CinemachineCameraTarget = _player;
     }
 
-    public void DropPickup() // should be seperated to inputs and logic i think
+    public void DropPickup()
     {
+        AudioManager.instance.playOneShot(FmodEvents.instance.playerDrop, transform.position);
 
-            DetachPickedUpObject(_objectRigidbody);
+        DetachPickedUpObject(_objectRigidbody);
 
-            ResetCameraDropMode();
+        ResetCameraDropMode();
 
-            _objectThatGotPickedUp = null;
+        _objectThatGotPickedUp = null;
     }
 
     private void DetachPickedUpObject(Rigidbody objectRigidbody)
@@ -83,7 +86,7 @@ public class Player_Pickup_Controller : MonoBehaviour
         objectRigidbody.linearVelocity = Vector3.zero;
     }
 
-    private void ResetCameraDropMode() //should probably change name to reflect changes to camera
+    private void ResetCameraDropMode()
     {
         _pickupCam.enabled = false;
         _playerContoller.TopClamp = _defaultCameraTopClamp;
@@ -91,13 +94,13 @@ public class Player_Pickup_Controller : MonoBehaviour
         _playerContoller.CinemachineCameraTarget = _playerCameraRoot;
     }
 
-    public void DropPickupInFrontOfWall(Vector3 dropPoint) 
+    public void DropPickupInFrontOfWall(Vector3 dropPoint)
     {
 
-            DetachPickedUpObject(_objectRigidbody);
-            _objectThatGotPickedUp.transform.position = dropPoint;
-            _objectThatGotPickedUp = null;
-            ResetCameraDropMode();
+        DetachPickedUpObject(_objectRigidbody);
+        _objectThatGotPickedUp.transform.position = dropPoint;
+        _objectThatGotPickedUp = null;
+        ResetCameraDropMode();
 
     }
 
